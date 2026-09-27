@@ -170,8 +170,8 @@ const text = {
 const Brand = () => (
   <a className="lx-brand" href="#top">
     <span className="lx-brandMark">
-      <img className="lx-markInk" src={asset("/brand/ownterra-mark-ink.png")} alt="" />
-      <img className="lx-markLight" src={asset("/brand/ownterra-mark-light.png")} alt="" />
+      <img className="lx-markInk" src={asset("/brand/ownterra-mark-ink.svg")} alt="" />
+      <img className="lx-markLight" src={asset("/brand/ownterra-mark-light.svg")} alt="" />
     </span>
     <b>Own Terra</b>
   </a>
