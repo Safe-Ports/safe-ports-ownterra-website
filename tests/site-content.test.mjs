@@ -7,11 +7,14 @@ const projectFiles = [
   "src/App.jsx",
   "src/Hub.jsx",
   "src/ProductLanding.jsx",
+  "src/Legal.jsx",
+  "src/components/SiteFooter.jsx",
   "index.html",
   "hub.html",
   "lands.html",
   "properties.html",
   "construction.html",
+  "legal.html",
 ];
 
 test("public product catalog matches the audited frontend states", () => {
@@ -85,5 +88,22 @@ test("internal links resolve against the deployment base", async () => {
         `${file} usa la ruta interna ${literal} sin asset().`,
       );
     }
+  }
+});
+
+test("Stripe review surfaces stay published", async () => {
+  // Stripe revisa que el sitio muestre precios, términos, política de
+  // cancelación y reembolsos, privacidad y quién opera el negocio.
+  const legal = await readFile("src/Legal.jsx", "utf8");
+  for (const id of ["terminos", "cancelacion", "privacidad"]) {
+    assert.match(legal, new RegExp(`id: "${id}"`));
+  }
+  const footer = await readFile("src/components/SiteFooter.jsx", "utf8");
+  assert.match(footer, /business\.legalName/);
+  assert.match(footer, /legal\.html#cancelacion/);
+  const productLanding = await readFile("src/ProductLanding.jsx", "utf8");
+  assert.match(productLanding, /id="precios"/);
+  for (const file of ["src/App.jsx", "src/Hub.jsx", "src/ProductLanding.jsx", "src/Legal.jsx"]) {
+    assert.match(await readFile(file, "utf8"), /<SiteFooter/, `${file} no usa el pie común.`);
   }
 });

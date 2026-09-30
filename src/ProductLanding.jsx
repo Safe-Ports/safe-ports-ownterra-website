@@ -1,4 +1,6 @@
 import { ArrowLeft, ArrowRight, Check, Layers3, ShieldCheck, Sparkles } from "lucide-react";
+import SiteFooter from "./components/SiteFooter";
+import { landsAddon, landsCurrency, landsPlans, landsTrial } from "./data/business";
 import { getPublicProduct } from "./data/publicProducts";
 import { asset } from "./lib/url";
 
@@ -9,7 +11,8 @@ const productDetails = {
     intro: "Conecta fraccionamientos, lotes, disponibilidad, clientes, citas, cotizaciones, contratos, pagos, documentos y reportes para equipos que venden tierra.",
     appPath: "/dashboard",
     canOpenApp: true,
-    transparency: "Aplicación web implementada. Los recorridos críticos deben verificarse contra el backend y los permisos de cada organización antes de cada release.",
+    transparency: `Aplicación web disponible por suscripción mensual, con prueba gratuita de ${landsTrial.days} días sin tarjeta.`,
+    pricing: true,
     outcomes: ["Inventario organizado por fraccionamiento", "Seguimiento comercial conectado al lote", "Contratos, cobranza y documentos relacionados"],
     features: [
       ["Inventario visual", "Organiza fraccionamientos y lotes con estatus, superficies, precios, disponibilidad y referencia de plano."],
@@ -70,6 +73,43 @@ const Brand = () => (
 );
 
 const featureIcons = [Layers3, Sparkles, ShieldCheck];
+
+const money = (amount) => `$${amount} ${landsCurrency}`;
+
+/* Planes publicados de Lands. Montos y límites vienen de data/business.js. */
+function Pricing({ trialHref, external }) {
+  return (
+    <section className="lxp-section lx-shell" id="precios">
+      <header className="lxp-sectionHead">
+        <small className="lx-label">Planes y precios</small>
+        <h2 className="lx-h2">Elige el plan de tu inmobiliaria.</h2>
+        <p className="lx-lead">Suscripción mensual en {landsCurrency}, más impuestos aplicables. Cambia de plan o cancela cuando quieras; conservas el acceso hasta el final del periodo pagado.</p>
+      </header>
+      <div className="lxp-plans">
+        <article className="lxp-plan lxp-plan--trial">
+          <h3>{landsTrial.name}</h3>
+          <p className="lxp-planTag">{landsTrial.days} días para conocer Lands.</p>
+          <p className="lxp-planPrice"><b>Gratis</b></p>
+          <ul>{landsTrial.highlights.map((item) => <li key={item}><Check />{item}</li>)}</ul>
+          <a className="lx-btn lx-btn--line" href={trialHref} {...external}>Empezar prueba</a>
+        </article>
+        {landsPlans.map((plan) => (
+          <article key={plan.key} className={`lxp-plan${plan.recommended ? " is-rec" : ""}`}>
+            {plan.recommended && <span className="lxp-planRibbon">Recomendado</span>}
+            <h3>{plan.name}</h3>
+            <p className="lxp-planTag">{plan.tagline}</p>
+            <p className="lxp-planPrice"><b>{money(plan.price)}</b><span>/mes</span></p>
+            <ul>{plan.highlights.map((item) => <li key={item}><Check />{item}</li>)}</ul>
+          </article>
+        ))}
+      </div>
+      <p className="lxp-planNote">
+        {landsAddon.label}: {money(landsAddon.price)}, disponible en cualquier plan. Los pagos se procesan de forma segura con Stripe.{" "}
+        Consulta los <a href={asset("/legal.html#terminos")}>términos</a> y la <a href={asset("/legal.html#cancelacion")}>política de cancelación y reembolsos</a>.
+      </p>
+    </section>
+  );
+}
 
 export default function ProductLanding({ productKey }) {
   const product = getPublicProduct(productKey);
@@ -147,6 +187,8 @@ export default function ProductLanding({ productKey }) {
           </div>
         </section>
 
+        {details.pricing && <Pricing trialHref={appBase || asset("/#contact")} external={appBase ? { target: "_blank", rel: "noreferrer" } : {}} />}
+
         <section className="lxp-section lx-shell">
           <header className="lxp-sectionHead">
             <small className="lx-label">{details.galleryLabel}</small>
@@ -181,11 +223,7 @@ export default function ProductLanding({ productKey }) {
         </section>
       </main>
 
-      <footer className="lx-footer">
-        <Brand />
-        <span>© 2026</span>
-        <p>{product.name} · {product.statusLabel.es} en Own Terra</p>
-      </footer>
+      <SiteFooter brand={<Brand />} tagline={`${product.name} · ${product.statusLabel.es} en Own Terra`} />
     </div>
   );
 }

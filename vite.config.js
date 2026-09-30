@@ -35,6 +35,7 @@ export default defineConfig(({ mode }) => {
           lands: resolve(__dirname, "lands.html"),
           properties: resolve(__dirname, "properties.html"),
           construction: resolve(__dirname, "construction.html"),
+          legal: resolve(__dirname, "legal.html"),
         },
       },
     },
