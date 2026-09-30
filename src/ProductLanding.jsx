@@ -104,7 +104,7 @@ function Pricing({ trialHref, external }) {
         ))}
       </div>
       <p className="lxp-planNote">
-        {landsAddon.label}: {money(landsAddon.price)}, disponible en cualquier plan. Los pagos se procesan de forma segura con Stripe.{" "}
+        La app móvil para vendedores no tiene costo adicional: se incluye con cualquier plan de pago activo (acceso anticipado, aún no publicada en tiendas). {landsAddon.label}: {money(landsAddon.price)}, disponible en cualquier plan. Los pagos se procesan de forma segura con Stripe.{" "}
         Consulta los <a href={asset("/legal.html#terminos")}>términos</a> y la <a href={asset("/legal.html#cancelacion")}>política de cancelación y reembolsos</a>.
       </p>
     </section>

@@ -21,6 +21,7 @@ const sections = [
       ]],
       ["2. El servicio", [
         `${business.brand} Lands es un software como servicio para la operación comercial de terrenos: fraccionamientos, lotes, clientes, contratos, cobranza, documentos y reportes. Se ofrece mediante suscripción y se usa a través de una aplicación web.`,
+        "La aplicación móvil para vendedores no tiene costo adicional y solo funciona mientras la organización tenga una suscripción de pago activa. La suscripción se contrata y administra únicamente desde la aplicación web; la app móvil no realiza cobros.",
         `${business.brand} Properties y ${business.brand} Construction se muestran en este sitio como vista previa y exploración, respectivamente; no están a la venta ni forman parte de ninguna suscripción hasta que se anuncie lo contrario.`,
       ]],
       ["3. Cuentas y usuarios", [
