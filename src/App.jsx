@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, Check, LogIn, Menu, ShieldCheck, X } from "lucide-react";
 import { getPublicProduct, publicProducts } from "./data/publicProducts";
+import SiteFooter from "./components/SiteFooter";
 import { asset } from "./lib/url";
 
 const text = {
   es: {
     locale: "English",
-    nav: ["El ciclo", "Ecosistema", "Cómo funciona", "Acceso"],
+    nav: ["El ciclo", "Ecosistema", "Cómo funciona", "Precios", "Acceso"],
     contact: "Solicitar demo",
     access: "Ingresar a Own Terra",
     accessPending: "Solicitar acceso",
@@ -86,7 +87,7 @@ const text = {
   },
   en: {
     locale: "Español",
-    nav: ["The cycle", "Ecosystem", "How it works", "Sign in"],
+    nav: ["The cycle", "Ecosystem", "How it works", "Pricing", "Sign in"],
     contact: "Request a demo",
     access: "Open Own Terra",
     accessPending: "Request access",
@@ -254,7 +255,7 @@ export default function App() {
           {t.nav.map((item, index) => (
             <a
               key={item}
-              href={["#ciclo", "#services", "#work", "#client-access"][index]}
+              href={["#ciclo", "#services", "#work", asset("/lands.html#precios"), "#client-access"][index]}
               onClick={() => setMenu(false)}
             >
               {item}
@@ -518,11 +519,7 @@ export default function App() {
         </section>
       </main>
 
-      <footer className="lx-footer">
-        <Brand />
-        <span>© 2026</span>
-        <p>{t.footer}</p>
-      </footer>
+      <SiteFooter brand={<Brand />} tagline={t.footer} lang={lang} />
     </div>
   );
 }

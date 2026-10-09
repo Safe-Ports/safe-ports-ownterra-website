@@ -1,5 +1,6 @@
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { publicProducts } from "./data/publicProducts";
+import SiteFooter from "./components/SiteFooter";
 import { asset } from "./lib/url";
 
 const Brand = () => (
@@ -321,11 +322,7 @@ export default function Hub() {
         </section>
       </main>
 
-      <footer className="lx-footer">
-        <Brand />
-        <span>© 2026</span>
-        <p>Una plataforma de producto, no un conjunto de aplicaciones sin relación</p>
-      </footer>
+      <SiteFooter brand={<Brand />} tagline="Una plataforma de producto, no un conjunto de aplicaciones sin relación" />
     </div>
   );
 }
