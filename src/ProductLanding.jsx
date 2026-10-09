@@ -30,7 +30,7 @@ const productDetails = {
     intro: "Properties parte de Organización → Propiedad → Unidad/Espacio para representar una casa, edificio, comunidad, plaza, hotel, oficina, bodega o inmueble mixto.",
     appPath: "/properties",
     canOpenApp: false,
-    transparency: "Vista previa funcional. Propietarios, propiedades, unidades, comunidades, rentas, portales y monitoreo usan principalmente datos demo, locales o en memoria; la persistencia backend aún está incompleta.",
+    transparency: "Vista previa conectada. Propietarios, propiedades, unidades, comunidades, amenidades, votaciones, paquetería, cargos y el portal de residentes ya operan contra la API de Properties, con aislamiento por organización. Rentas, hospitalidad, marketplace, servicios y mantenimiento siguen con datos demo o locales.",
     outcomes: ["Portafolio relacionado con propietarios", "Estados por propiedad y unidad", "Rutas de comunidad, renta y operación"],
     features: [
       ["Portafolio base", "Explora propietarios, propiedades, imágenes y unidades sin perder sus relaciones jerárquicas."],
@@ -38,7 +38,7 @@ const productDetails = {
       ["Operación por unidad", "Previsualiza estados, tickets, accesos, proveedores, servicios y monitoreo dentro del mismo contexto."],
     ],
     shots: [["/screenshots/properties-operations.jpg", "Vista previa de operación"], ["/screenshots/properties-portfolio.jpg", "Vista previa del portafolio"]],
-    galleryLabel: "VISTA PREVIA FUNCIONAL",
+    galleryLabel: "VISTA PREVIA CONECTADA",
     galleryTitle: "Así se organiza la experiencia de Properties.",
     galleryBody: "Estas pantallas sirven para validar el producto; no representan todavía una integración productiva completa.",
   },

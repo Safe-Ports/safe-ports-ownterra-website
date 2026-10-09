@@ -45,11 +45,11 @@ export const publicProducts = [
     name: "OwnTerra Properties",
     handle: "terra.properties",
     status: "prototype",
-    statusLabel: { es: "Vista previa funcional", en: "Functional preview" },
+    statusLabel: { es: "Vista previa conectada", en: "Connected preview" },
     statusShort: { es: "Vista previa", en: "Preview" },
     description: {
-      es: "Portafolio, propietarios, propiedades, unidades, comunidades, rentas y operación. La experiencia actual es un prototipo funcional con datos demo o locales.",
-      en: "Portfolio, owners, properties, units, communities, rentals, and operations. The current experience is a functional preview using demo or local data.",
+      es: "Portafolio, propietarios, propiedades, unidades, comunidades, cargos y portal de residentes, ya conectados a su propia API. Rentas, hospitalidad, marketplace y mantenimiento siguen como vista previa con datos demo.",
+      en: "Portfolio, owners, properties, units, communities, charges, and the resident portal now run against their own API. Rentals, hospitality, marketplace, and maintenance remain a preview on demo data.",
     },
     tags: {
       es: ["Propietarios", "Propiedades", "Unidades"],
