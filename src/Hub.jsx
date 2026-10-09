@@ -1,12 +1,13 @@
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { publicProducts } from "./data/publicProducts";
+import SiteFooter from "./components/SiteFooter";
 import { asset } from "./lib/url";
 
 const Brand = () => (
   <a className="lx-brand" href={asset("/")}>
     <span className="lx-brandMark">
-      <img className="lx-markInk" src={asset("/brand/ownterra-mark-ink.png")} alt="" />
-      <img className="lx-markLight" src={asset("/brand/ownterra-mark-light.png")} alt="" />
+      <img className="lx-markInk" src={asset("/brand/ownterra-mark-ink.svg")} alt="" />
+      <img className="lx-markLight" src={asset("/brand/ownterra-mark-light.svg")} alt="" />
     </span>
     <b>Own Terra</b>
   </a>
@@ -114,7 +115,7 @@ export default function Hub() {
           </p>
         </section>
 
-        {/* Diagrama: verticales sobre Core, con Finanzas leyendo de forma transversal. */}
+        {/* Diagrama: verticales de dominio sobre el plano compartido de Core. */}
         <section className="lx-section lx-shell" id="arquitectura">
           <header className="lx-sectionHead">
             <small className="lx-label">Cómo está construido</small>
@@ -122,7 +123,7 @@ export default function Hub() {
             <p className="lx-lead">
               Core es el plano compartido de control: concentra identidad y servicios reutilizables
               y nunca se convierte en otra vertical de negocio. Encima operan las verticales de
-              dominio. Finanzas lee de forma transversal sin borrar el origen de cada movimiento.
+              dominio, cada una con sus propias reglas y sin duplicar lo que Core ya resuelve.
             </p>
           </header>
 
@@ -143,24 +144,6 @@ export default function Hub() {
                     <p className="lxh-vertDesc">{v.description.es}</p>
                   </a>
                 ))}
-              </div>
-            </div>
-
-            <div className="lxh-connector is-up" aria-hidden="true" />
-
-            <div className="lxh-layer lxh-cross">
-              <div className="lxh-layerTag">
-                <small>Transversal</small>
-                <span>En evolución</span>
-              </div>
-              <div className="lxh-crossRow">
-                <img src={asset("/icons/app-finanzas.png")} alt="" />
-                <h3>Finanzas</h3>
-                <p>
-                  Consolida cobranza, pagos y reportes entre verticales conservando la procedencia
-                  de cada transacción. Las reglas contables, la conciliación y el cierre de periodo
-                  todavía requieren validación con el responsable financiero.
-                </p>
               </div>
             </div>
 
@@ -321,11 +304,7 @@ export default function Hub() {
         </section>
       </main>
 
-      <footer className="lx-footer">
-        <Brand />
-        <span>© 2026</span>
-        <p>Una plataforma de producto, no un conjunto de aplicaciones sin relación</p>
-      </footer>
+      <SiteFooter brand={<Brand />} tagline="Una plataforma de producto, no un conjunto de aplicaciones sin relación" />
     </div>
   );
 }

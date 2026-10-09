@@ -678,6 +678,16 @@ body:has(.lx-site) {
 
 .lx-footer p { margin: 0 0 0 auto; }
 
+/* Pie común (SiteFooter): marca, enlaces legales e identidad del operador. */
+.lx-siteFooter { flex-direction: column; align-items: stretch; gap: 22px; }
+.lx-siteFooterTop { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.lx-siteFooterLinks { display: flex; flex-wrap: wrap; gap: 10px 26px; }
+.lx-siteFooterLinks a,
+.lx-siteFooterId a { color: var(--ink-soft); transition: color 0.25s ease; }
+.lx-siteFooterLinks a:hover,
+.lx-siteFooterId a:hover { color: var(--terracotta); }
+.lx-siteFooterId { display: flex; flex-wrap: wrap; gap: 6px 22px; font-style: normal; }
+
 /* ---------- Responsive ---------- */
 
 @media (max-width: 1000px) {
@@ -727,6 +737,7 @@ body:has(.lx-site) {
   .lx-band { flex-direction: column; align-items: flex-start; }
   .lx-actions .lx-btn { width: 100%; }
   .lx-footer p { margin: 0; width: 100%; }
+  .lx-siteFooterId { flex-direction: column; }
 }
 
 @media (max-width: 560px) {

@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, Check, LogIn, Menu, ShieldCheck, X } from "lucide-react";
 import { getPublicProduct, publicProducts } from "./data/publicProducts";
+import SiteFooter from "./components/SiteFooter";
 import { asset } from "./lib/url";
 
 const text = {
   es: {
     locale: "English",
-    nav: ["El ciclo", "Ecosistema", "Cómo funciona", "Acceso"],
+    nav: ["El ciclo", "Ecosistema", "Cómo funciona", "Precios", "Acceso"],
     contact: "Solicitar demo",
     access: "Ingresar a Own Terra",
     accessPending: "Solicitar acceso",
@@ -37,13 +38,13 @@ const text = {
     mobileCta: "Solicitar acceso a la beta",
     mobileShots: ["Inicio y pendientes del día", "Track de lotes", "Proyectos y planos"],
     cycleBaseTag: "Capa transversal",
-    cycleBase: ["Clientes", "Documentos", "Finanzas", "Comunicación", "Datos"],
+    cycleBase: ["Clientes", "Documentos", "Agenda", "Comunicación", "Datos"],
     serviceTag: "El ecosistema",
     serviceTitle: "Una plataforma compartida, dos verticales principales.",
-    serviceNote: "Lands y Properties comparten organización, sesión, clientes, permisos y servicios de Core. Finanzas es una vista transversal en evolución; Construction permanece como exploración.",
+    serviceNote: "Lands y Properties comparten organización, sesión, clientes, permisos y servicios de Core. Construction permanece como exploración.",
     workTag: "Cómo funciona",
     workTitle: "El activo y su operación conservan el mismo contexto.",
-    workBody: "Core concentra identidad, organización, equipo, agenda, clientes, formularios y documentos. Lands y Properties añaden sus flujos de dominio, mientras Finanzas conserva la procedencia de cada movimiento.",
+    workBody: "Core concentra identidad, organización, equipo, agenda, clientes, formularios y documentos. Lands y Properties añaden sus flujos de dominio sin duplicar nada de eso, y cada movimiento conserva la vertical de la que proviene.",
     bullets: [
       "Lands conecta fraccionamientos, lotes, clientes, contratos y cobranza",
       "Properties usa la jerarquía Organización → Propiedad → Unidad/Espacio",
@@ -86,7 +87,7 @@ const text = {
   },
   en: {
     locale: "Español",
-    nav: ["The cycle", "Ecosystem", "How it works", "Sign in"],
+    nav: ["The cycle", "Ecosystem", "How it works", "Pricing", "Sign in"],
     contact: "Request a demo",
     access: "Open Own Terra",
     accessPending: "Request access",
@@ -117,13 +118,13 @@ const text = {
     mobileCta: "Request beta access",
     mobileShots: ["Home and daily tasks", "Lot tracking", "Projects and site plans"],
     cycleBaseTag: "Cross-cutting layer",
-    cycleBase: ["Clients", "Documents", "Finance", "Communication", "Data"],
+    cycleBase: ["Clients", "Documents", "Calendar", "Communication", "Data"],
     serviceTag: "The ecosystem",
     serviceTitle: "One shared platform, two main verticals.",
-    serviceNote: "Lands and Properties share organization, session, clients, permissions, and Core services. Finance is an evolving cross-platform view; Construction remains exploratory.",
+    serviceNote: "Lands and Properties share organization, session, clients, permissions, and Core services. Construction remains exploratory.",
     workTag: "How it works",
     workTitle: "The asset and its operation keep the same context.",
-    workBody: "Core owns identity, organization, team, calendar, clients, forms, and documents. Lands and Properties add domain workflows, while Finance preserves the source of each transaction.",
+    workBody: "Core owns identity, organization, team, calendar, clients, forms, and documents. Lands and Properties add domain workflows without duplicating any of it, and every transaction keeps the vertical it came from.",
     bullets: [
       "Lands connects developments, lots, clients, contracts, and collections",
       "Properties uses Organization → Property → Unit/Space",
@@ -170,8 +171,8 @@ const text = {
 const Brand = () => (
   <a className="lx-brand" href="#top">
     <span className="lx-brandMark">
-      <img className="lx-markInk" src={asset("/brand/ownterra-mark-ink.png")} alt="" />
-      <img className="lx-markLight" src={asset("/brand/ownterra-mark-light.png")} alt="" />
+      <img className="lx-markInk" src={asset("/brand/ownterra-mark-ink.svg")} alt="" />
+      <img className="lx-markLight" src={asset("/brand/ownterra-mark-light.svg")} alt="" />
     </span>
     <b>Own Terra</b>
   </a>
@@ -254,7 +255,7 @@ export default function App() {
           {t.nav.map((item, index) => (
             <a
               key={item}
-              href={["#ciclo", "#services", "#work", "#client-access"][index]}
+              href={["#ciclo", "#services", "#work", asset("/lands.html#precios"), "#client-access"][index]}
               onClick={() => setMenu(false)}
             >
               {item}
@@ -518,11 +519,7 @@ export default function App() {
         </section>
       </main>
 
-      <footer className="lx-footer">
-        <Brand />
-        <span>© 2026</span>
-        <p>{t.footer}</p>
-      </footer>
+      <SiteFooter brand={<Brand />} tagline={t.footer} lang={lang} />
     </div>
   );
 }
