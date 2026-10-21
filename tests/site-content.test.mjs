@@ -8,6 +8,7 @@ const projectFiles = [
   "src/Hub.jsx",
   "src/ProductLanding.jsx",
   "src/Legal.jsx",
+  "src/PrivacyNotice.jsx",
   "src/components/SiteFooter.jsx",
   "index.html",
   "hub.html",
@@ -15,6 +16,7 @@ const projectFiles = [
   "properties.html",
   "construction.html",
   "legal.html",
+  "aviso-privacidad.html",
 ];
 
 test("public product catalog matches the audited frontend states", () => {
@@ -103,7 +105,23 @@ test("Stripe review surfaces stay published", async () => {
   assert.match(footer, /legal\.html#cancelacion/);
   const productLanding = await readFile("src/ProductLanding.jsx", "utf8");
   assert.match(productLanding, /id="precios"/);
-  for (const file of ["src/App.jsx", "src/Hub.jsx", "src/ProductLanding.jsx", "src/Legal.jsx"]) {
+  for (const file of ["src/App.jsx", "src/Hub.jsx", "src/ProductLanding.jsx", "src/Legal.jsx", "src/PrivacyNotice.jsx"]) {
     assert.match(await readFile(file, "utf8"), /<SiteFooter/, `${file} no usa el pie común.`);
   }
+});
+
+test("privacy notice is published and linked", async () => {
+  // LFPDPPP: el aviso integral debe estar publicado con responsable, domicilio,
+  // derechos ARCO y el anexo de proveedores, y el pie debe llevar a él.
+  const notice = await readFile("src/data/privacyNotice.js", "utf8");
+  for (const id of ["responsable", "finalidades", "transferencias", "arco", "consentimiento", "anexo-a", "anexo-b"]) {
+    assert.match(notice, new RegExp(`id: "${id}"`), `falta la sección ${id}`);
+  }
+  assert.match(notice, /Vallarta 500/);
+  assert.match(notice, /safeports\.contacto@gmail\.com/);
+  assert.doesNotMatch(notice, /\[URL\]/, "quedó un [URL] sin sustituir");
+  const footer = await readFile("src/components/SiteFooter.jsx", "utf8");
+  assert.match(footer, /aviso-privacidad\.html/);
+  const vite = await readFile("vite.config.js", "utf8");
+  assert.match(vite, /aviso-privacidad\.html/);
 });

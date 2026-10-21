@@ -36,6 +36,7 @@ export default defineConfig(({ mode }) => {
           properties: resolve(__dirname, "properties.html"),
           construction: resolve(__dirname, "construction.html"),
           legal: resolve(__dirname, "legal.html"),
+          privacy: resolve(__dirname, "aviso-privacidad.html"),
         },
       },
     },

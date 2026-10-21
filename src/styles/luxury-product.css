@@ -285,6 +285,38 @@
 .lxl-block { margin-bottom: 26px; }
 .lxl-block h3 { margin: 0 0 8px; font: 500 15px/1.4 var(--sans); color: var(--ink); }
 .lxl-block p { margin: 0 0 10px; font-size: 15px; line-height: 1.8; font-weight: 300; color: var(--ink-soft); }
+.lxl-block strong { font-weight: 500; color: var(--ink); }
+
+/* ---------- Aviso de privacidad ---------- */
+
+.lxa-toc { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 28px; }
+.lxa-list { margin: 0 0 14px; padding-left: 22px; display: grid; gap: 10px; }
+.lxa-list li { font-size: 15px; line-height: 1.8; font-weight: 300; color: var(--ink-soft); }
+.lxa-list li::marker { color: var(--terracotta); }
+.lxa-sub { margin: -14px 0 24px; font-size: 13.5px; font-style: italic; color: var(--ink-mute); }
+
+.lxa-tableWrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 14px; }
+.lxa-table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.55; }
+.lxa-table th, .lxa-table td { padding: 12px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--rule); }
+.lxa-table thead th { font: 500 12px/1.4 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--ink); background: rgba(176, 84, 58, .06); }
+.lxa-table tbody th { font-weight: 500; color: var(--ink); }
+.lxa-table td { font-weight: 300; color: var(--ink-soft); }
+.lxa-table tbody tr:last-child > * { border-bottom: 0; }
+
+.lxa-checks { list-style: none; margin: 18px 0; padding: 18px 20px; display: grid; gap: 12px; border: 1px solid var(--rule); border-radius: 14px; }
+.lxa-checks li { display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 12px; font-size: 15px; line-height: 1.7; font-weight: 300; color: var(--ink-soft); }
+.lxa-checks span { width: 18px; height: 18px; margin-top: 4px; border: 1.5px solid var(--ink-soft); border-radius: 4px; }
+
+@media (max-width: 700px) {
+  .lxa-toc { grid-template-columns: 1fr; }
+  .lxa-tableWrap { overflow: visible; border: 0; }
+  .lxa-table thead { display: none; }
+  .lxa-table, .lxa-table tbody, .lxa-table tr, .lxa-table th, .lxa-table td { display: block; }
+  .lxa-table tr { margin-bottom: 12px; padding: 14px 16px; border: 1px solid var(--rule); border-radius: 14px; }
+  .lxa-table th, .lxa-table td { padding: 4px 0; border: 0; }
+  .lxa-table tbody th { font-size: 16px; padding-bottom: 8px; }
+  .lxa-table td::before { content: attr(data-label) ": "; font-weight: 500; color: var(--ink); }
+}
 
 /* ---------- Responsive ---------- */
 
