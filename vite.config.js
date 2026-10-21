@@ -24,9 +24,10 @@ export default defineConfig(({ mode }) => {
   }
 
   return {
-    // Project page de GitHub Pages: vive bajo /<nombre-del-repo>/. Se toma de
-    // GITHUB_REPOSITORY para que renombrar el repo no deje el sitio en 404.
-    base: process.env.GITHUB_ACTIONS ? `/${process.env.GITHUB_REPOSITORY?.split("/")[1] ?? "safe-ports-ownterra-website"}/` : "/",
+    // GitHub Pages: la ruta base la decide configure-pages (PAGES_BASE_PATH):
+    // vacía con dominio propio (own-terra.com) y /<repo> como project page.
+    // Así ni un rename del repo ni conectar el dominio dejan assets en 404.
+    base: process.env.GITHUB_ACTIONS ? `${process.env.PAGES_BASE_PATH ?? ""}/` : "/",
     plugins: [react()],
     build: {
       sourcemap: false,

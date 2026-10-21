@@ -32,6 +32,8 @@ jobs:
       - run: npm run build
         env:
           VITE_SITE_URL: ${{ vars.VITE_SITE_URL || steps.pages.outputs.base_url }}
+          # '' con dominio propio, '/<repo>' como project page.
+          PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}
           VITE_OWN_TERRA_URL: ${{ vars.VITE_OWN_TERRA_URL }}
       - uses: actions/upload-pages-artifact@v3
         with:
