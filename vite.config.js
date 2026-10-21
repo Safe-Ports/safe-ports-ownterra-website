@@ -24,7 +24,9 @@ export default defineConfig(({ mode }) => {
   }
 
   return {
-    base: process.env.GITHUB_ACTIONS ? "/safe-ports-website/" : "/",
+    // Project page de GitHub Pages: vive bajo /<nombre-del-repo>/. Se toma de
+    // GITHUB_REPOSITORY para que renombrar el repo no deje el sitio en 404.
+    base: process.env.GITHUB_ACTIONS ? `/${process.env.GITHUB_REPOSITORY?.split("/")[1] ?? "safe-ports-ownterra-website"}/` : "/",
     plugins: [react()],
     build: {
       sourcemap: false,

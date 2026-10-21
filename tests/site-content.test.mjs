@@ -65,7 +65,7 @@ test("every public page declares the branded social image", async () => {
 });
 
 test("internal links resolve against the deployment base", async () => {
-  // El sitio se publica como project page bajo /safe-ports-website/, así que un
+  // El sitio se publica como project page bajo /safe-ports-ownterra-website/, así que un
   // href absoluto apunta a la raíz del dominio y devuelve 404. Toda ruta interna
   // debe pasar por asset() de src/lib/url.js.
   for (const file of projectFiles.filter((name) => name.endsWith(".jsx"))) {
