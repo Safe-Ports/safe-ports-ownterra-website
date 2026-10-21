@@ -52,7 +52,6 @@ export default function PrivacyNotice() {
         <header className="lxl-head">
           <small className="lx-label">Privacidad</small>
           <h1 className="lx-h2">Aviso de privacidad integral</h1>
-          <p className="lx-lead">Versión {privacyVersion} · Última actualización: {privacyUpdatedAt}.</p>
           <nav className="lxl-toc lxa-toc" aria-label="Contenido">
             {toc.map(({ id, title }) => <a key={id} href={`#${id}`}>{title}</a>)}
           </nav>
@@ -95,6 +94,8 @@ export default function PrivacyNotice() {
             <p>{simplifiedNotice.footnote}</p>
           </div>
         </section>
+
+        <p className="lxa-meta">Versión {privacyVersion} · Última actualización: {privacyUpdatedAt}</p>
       </main>
 
       <SiteFooter brand={<Brand />} />

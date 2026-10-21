@@ -293,6 +293,7 @@
 .lxa-list { margin: 0 0 14px; padding-left: 22px; display: grid; gap: 10px; }
 .lxa-list li { font-size: 15px; line-height: 1.8; font-weight: 300; color: var(--ink-soft); }
 .lxa-list li::marker { color: var(--terracotta); }
+.lxa-meta { margin: 56px 0 0; padding-top: 20px; border-top: 1px solid var(--rule); font-size: 12px; letter-spacing: .02em; color: var(--ink-mute); }
 .lxa-sub { margin: -14px 0 24px; font-size: 13.5px; font-style: italic; color: var(--ink-mute); }
 
 .lxa-tableWrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 14px; }
@@ -317,6 +318,12 @@
   .lxa-table tbody th { font-size: 16px; padding-bottom: 8px; }
   .lxa-table td::before { content: attr(data-label) ": "; font-weight: 500; color: var(--ink); }
 }
+
+/* ---------- 404 ---------- */
+
+.lxn-main { min-height: 55vh; display: grid; align-content: center; gap: 18px; }
+.lxn-links { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; margin-top: 12px; }
+.lxn-links a:not(.lx-navCta) { font-size: 14.5px; color: var(--terracotta); text-decoration: underline; text-underline-offset: 3px; }
 
 /* ---------- Responsive ---------- */
 

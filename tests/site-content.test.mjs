@@ -9,6 +9,7 @@ const projectFiles = [
   "src/ProductLanding.jsx",
   "src/Legal.jsx",
   "src/PrivacyNotice.jsx",
+  "src/NotFound.jsx",
   "src/components/SiteFooter.jsx",
   "index.html",
   "hub.html",
@@ -17,6 +18,7 @@ const projectFiles = [
   "construction.html",
   "legal.html",
   "aviso-privacidad.html",
+  "404.html",
 ];
 
 test("public product catalog matches the audited frontend states", () => {
