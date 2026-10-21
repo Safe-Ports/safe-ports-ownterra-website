@@ -8,8 +8,8 @@ const operator = `${business.legalName}, con domicilio en ${business.city}, ${bu
 /*
   Texto base redactado a partir de cómo funciona hoy el cobro en la aplicación
   (Stripe Checkout + Billing Portal con cancelación al final del periodo).
-  Debe revisarlo el abogado; la sección de privacidad se sustituye por el aviso
-  integral en cuanto esté aprobado.
+  Debe revisarlo el abogado. El aviso de privacidad integral vive en su propia
+  página (aviso-privacidad.html); aquí solo queda el resumen del sitio.
 */
 const sections = [
   {
@@ -91,7 +91,7 @@ const sections = [
         "Usamos los datos que nos envíes (nombre, empresa, correo y detalles de tu operación) únicamente para responder tu solicitud y, en su caso, presentarte el servicio.",
       ]],
       ["Aviso de privacidad integral", [
-        "El aviso de privacidad integral de la aplicación, con el detalle de finalidades, transferencias y el procedimiento para ejercer tus derechos de acceso, rectificación, cancelación y oposición (ARCO), se publicará en esta sección. Mientras tanto puedes ejercer esos derechos o resolver dudas escribiendo a nuestro correo de contacto.",
+        <>El detalle de finalidades, transferencias y el procedimiento para ejercer tus derechos de acceso, rectificación, cancelación y oposición (ARCO) está en el <a href={asset("/aviso-privacidad.html")}>aviso de privacidad integral</a>.</>,
       ]],
     ],
   },
@@ -134,7 +134,7 @@ export default function Legal() {
             {blocks.map(([heading, paragraphs]) => (
               <div key={heading} className="lxl-block">
                 <h3>{heading}</h3>
-                {paragraphs.map((p) => <p key={p}>{p}</p>)}
+                {paragraphs.map((p, i) => <p key={i}>{p}</p>)}
               </div>
             ))}
           </section>

@@ -4,11 +4,11 @@ import { asset } from "../lib/url";
 const copy = {
   es: {
     operated: `${business.brand} es una marca operada por ${business.legalName}.`,
-    links: [["Precios", asset("/lands.html#precios")], ["Términos", asset("/legal.html#terminos")], ["Cancelación y reembolsos", asset("/legal.html#cancelacion")], ["Privacidad", asset("/legal.html#privacidad")]],
+    links: [["Precios", asset("/lands.html#precios")], ["Términos", asset("/legal.html#terminos")], ["Cancelación y reembolsos", asset("/legal.html#cancelacion")], ["Aviso de privacidad", asset("/aviso-privacidad.html")]],
   },
   en: {
     operated: `${business.brand} is a brand operated by ${business.legalName}.`,
-    links: [["Pricing", asset("/lands.html#precios")], ["Terms", asset("/legal.html#terminos")], ["Cancellation and refunds", asset("/legal.html#cancelacion")], ["Privacy", asset("/legal.html#privacidad")]],
+    links: [["Pricing", asset("/lands.html#precios")], ["Terms", asset("/legal.html#terminos")], ["Cancellation and refunds", asset("/legal.html#cancelacion")], ["Privacy notice", asset("/aviso-privacidad.html")]],
   },
 };
 
