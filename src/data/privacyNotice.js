@@ -171,7 +171,7 @@ export const privacySections = [
     id: "consentimiento",
     title: "15. Consentimiento",
     blocks: [
-      "Al aceptar los términos y condiciones, usted manifiesta haber leído este aviso. Para el tratamiento de sus datos patrimoniales y financieros, y para las transferencias que lo requieran, otorga su consentimiento expreso marcando la casilla correspondiente, que no aparece marcada por defecto y es independiente de la aceptación de los términos. Para las finalidades secundarias descritas en la sección 6 no se requiere marcar casilla alguna, pero usted puede oponerse en cualquier momento conforme a ese apartado y a la sección 11.",
+      "Al marcar la casilla \"He leído y acepto\" al registrarse, usted manifiesta haber leído este aviso y otorga su consentimiento expreso para el tratamiento de sus datos patrimoniales y financieros y para las transferencias que lo requieran. La casilla no aparece marcada por defecto. Para las finalidades secundarias descritas en la sección 6 no se requiere casilla alguna; usted puede oponerse en cualquier momento conforme a ese apartado y a la sección 11.",
     ],
   },
 ];
@@ -208,10 +208,6 @@ export const simplifiedNotice = {
     "**Transferencias:** compartimos datos con proveedores de infraestructura y servicios, algunos fuera de México (Estados Unidos y Unión Europea), y con Stripe para el cobro, necesario para el servicio.",
     `**Derechos ARCO y revocación:** escriba a ${CONTACT}. Consulte el [[top|aviso integral]] en esta página.`,
   ],
-  checks: [
-    "Otorgo mi consentimiento expreso para el tratamiento de mis datos patrimoniales y financieros y para las transferencias descritas.",
-    "No deseo que mis datos se usen para las finalidades secundarias (bases de datos propias y desarrollo de inteligencia artificial).",
-    "Acepto los términos y condiciones.",
-  ],
+  check: "He leído y acepto el aviso de privacidad y los términos y condiciones, incluido el tratamiento de mis datos patrimoniales y financieros y las transferencias descritas.",
   footnote: "Cuando un cliente de la plataforma captura datos de sus compradores, inquilinos o residentes, es ese cliente quien debe mostrar su propio aviso y recabar el consentimiento.",
 };

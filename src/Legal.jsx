@@ -2,6 +2,7 @@ import { ArrowLeft } from "lucide-react";
 import SiteFooter from "./components/SiteFooter";
 import { business, landsCurrency, landsTrial, legalUpdatedAt } from "./data/business";
 import { asset } from "./lib/url";
+import { useHashScroll } from "./lib/useHashScroll";
 
 const operator = `${business.legalName}, con domicilio en ${business.city}, ${business.state}, ${business.country}`;
 
@@ -108,6 +109,7 @@ const Brand = () => (
 );
 
 export default function Legal() {
+  useHashScroll();
   return (
     <div className="lx-site">
       <header className="lx-nav">
