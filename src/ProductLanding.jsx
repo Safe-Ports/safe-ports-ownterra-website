@@ -29,7 +29,7 @@ const productDetails = {
     title: "Una jerarquía para cada propiedad y sus unidades.",
     intro: "Properties parte de Organización → Propiedad → Unidad/Espacio para representar una casa, edificio, comunidad, plaza, hotel, oficina, bodega o inmueble mixto.",
     appPath: "/properties",
-    canOpenApp: false,
+    canOpenApp: true,
     transparency: "Vista previa conectada. Propietarios, propiedades, unidades, comunidades, amenidades, votaciones, paquetería, cargos y el portal de residentes ya operan contra la API de Properties, con aislamiento por organización. Rentas, hospitalidad, marketplace, servicios y mantenimiento siguen con datos demo o locales.",
     outcomes: ["Portafolio relacionado con propietarios", "Estados por propiedad y unidad", "Rutas de comunidad, renta y operación"],
     features: [
