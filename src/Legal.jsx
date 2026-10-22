@@ -4,7 +4,7 @@ import { business, landsCurrency, landsTrial, legalUpdatedAt } from "./data/busi
 import { asset } from "./lib/url";
 import { useHashScroll } from "./lib/useHashScroll";
 
-const operator = `${business.legalName}, con domicilio en ${business.city}, ${business.state}, ${business.country}`;
+const operator = `${business.operator} (titular: ${business.legalName}), con domicilio en ${business.city}, ${business.state}, ${business.country}`;
 
 /*
   Texto base redactado a partir de cómo funciona hoy el cobro en la aplicación

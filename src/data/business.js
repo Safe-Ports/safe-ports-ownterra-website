@@ -2,14 +2,17 @@
   Fuente única de la identidad comercial, los planes publicados y la fecha de
   los documentos legales. Footer, precios y página legal derivan de aquí.
 
+  - `operator` es quien opera la marca de cara al público (pie de página).
   - `legalName` debe coincidir exactamente con el nombre registrado en Stripe
-    y en el RFC; Stripe compara el sitio contra ese dato.
+    y en el RFC; Stripe compara el sitio contra ese dato. Solo aparece dentro
+    de los textos legales (términos y aviso de privacidad), detrás de `operator`.
   - Los montos de `landsPlans` replican los de la aplicación
     (safe-port-own-terra-front/src/components/shared/PricingPlans.jsx). El cobro
     real lo define Stripe: si cambian ahí, actualizar aquí también.
 */
 export const business = {
   brand: "Own Terra",
+  operator: "Safe Ports",
   legalName: "Fernando Estrada",
   city: "Puerto Vallarta",
   state: "Jalisco",

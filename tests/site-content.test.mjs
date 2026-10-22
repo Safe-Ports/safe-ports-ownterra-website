@@ -103,7 +103,8 @@ test("Stripe review surfaces stay published", async () => {
     assert.match(legal, new RegExp(`id: "${id}"`));
   }
   const footer = await readFile("src/components/SiteFooter.jsx", "utf8");
-  assert.match(footer, /business\.legalName/);
+  assert.match(footer, /business\.operator/);
+  assert.match(legal, /business\.legalName/);
   assert.match(footer, /legal\.html#cancelacion/);
   const productLanding = await readFile("src/ProductLanding.jsx", "utf8");
   assert.match(productLanding, /id="precios"/);

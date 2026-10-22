@@ -19,7 +19,7 @@ export const privacySections = [
     id: "responsable",
     title: "1. Identidad y domicilio del responsable",
     blocks: [
-      "**Fernando Estrada**, persona física con actividad empresarial, titular de la plataforma **OwnTerra** (\"OwnTerra\"), con domicilio para oír y recibir notificaciones en Vallarta 500, Torre 2F, Depto. 8, Av. Principal, C.P. 48315, Puerto Vallarta, Jalisco, México, es responsable del tratamiento de sus datos personales conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP), su Reglamento y demás normatividad aplicable.",
+      "**Safe Ports**, nombre comercial de Fernando Estrada, persona física con actividad empresarial, titular de la plataforma **OwnTerra** (\"OwnTerra\"), con domicilio para oír y recibir notificaciones en Vallarta 500, Torre 2F, Depto. 8, Av. Principal, C.P. 48315, Puerto Vallarta, Jalisco, México, es responsable del tratamiento de sus datos personales conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP), su Reglamento y demás normatividad aplicable.",
       `Contacto para privacidad y derechos ARCO: **${CONTACT}**`,
     ],
   },
@@ -202,7 +202,7 @@ export const simplifiedNotice = {
   title: "Anexo B — Aviso de privacidad simplificado",
   subtitle: "Resumen de este aviso en una sola lectura",
   blocks: [
-    "**Responsable:** Fernando Estrada (OwnTerra), con domicilio para oír y recibir notificaciones en Vallarta 500, Torre 2F, Depto. 8, Av. Principal, C.P. 48315, Puerto Vallarta, Jalisco, México.",
+    "**Responsable:** Safe Ports (Fernando Estrada), operador de OwnTerra, con domicilio para oír y recibir notificaciones en Vallarta 500, Torre 2F, Depto. 8, Av. Principal, C.P. 48315, Puerto Vallarta, Jalisco, México.",
     "**Finalidades:** crear y operar su cuenta, relacionar inmuebles con personas y gestionar su documentación, cobrar la suscripción, enviar correos operativos, brindar soporte y dar seguridad. Adicionalmente, y salvo que usted se oponga, usamos sus datos de forma disociada o agregada para construir nuestras bases de datos y desarrollar y mejorar herramientas de inteligencia artificial. No usamos sus datos para publicidad.",
     "**Datos:** identificación, contacto, patrimoniales y financieros, y datos de acceso. No pedimos datos sensibles.",
     "**Transferencias:** compartimos datos con proveedores de infraestructura y servicios, algunos fuera de México (Estados Unidos y Unión Europea), y con Stripe para el cobro, necesario para el servicio.",
