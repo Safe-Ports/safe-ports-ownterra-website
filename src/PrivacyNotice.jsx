@@ -127,7 +127,6 @@ export default function PrivacyNotice() {
               <p className="lxa-sub">{simplifiedNotice.subtitle}</p>
               <div className="lxl-block">
                 {simplifiedNotice.blocks.map((block) => <Block key={block} block={block} />)}
-                <p className="lxa-check"><span aria-hidden="true" />{simplifiedNotice.check}</p>
                 <p>{simplifiedNotice.footnote}</p>
               </div>
             </section>

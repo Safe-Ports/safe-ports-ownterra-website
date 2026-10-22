@@ -319,9 +319,6 @@
 .lxa-table td { font-weight: 300; color: var(--ink-soft); }
 .lxa-table tbody tr:last-child > * { border-bottom: 0; }
 
-.lxl-block .lxa-check { display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 12px; margin: 18px 0; padding: 18px 20px; border: 1px solid var(--rule); border-radius: 14px; }
-.lxa-check span { width: 18px; height: 18px; margin-top: 5px; border: 1.5px solid var(--ink-soft); border-radius: 4px; }
-
 @media (max-width: 960px) {
   .lxa-layout { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .lxa-side { position: sticky; top: 82px; z-index: 5; max-height: none; overflow: visible; padding: 0; background: var(--stone-1); border-bottom: 1px solid var(--rule); }

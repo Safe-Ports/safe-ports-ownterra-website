@@ -200,7 +200,7 @@ export const providersAnnex = {
 export const simplifiedNotice = {
   id: "anexo-b",
   title: "Anexo B — Aviso de privacidad simplificado",
-  subtitle: "Para mostrar en registro, inicio de sesión, formulario del sitio y formularios públicos",
+  subtitle: "Resumen de este aviso en una sola lectura",
   blocks: [
     "**Responsable:** Fernando Estrada (OwnTerra), con domicilio para oír y recibir notificaciones en Vallarta 500, Torre 2F, Depto. 8, Av. Principal, C.P. 48315, Puerto Vallarta, Jalisco, México.",
     "**Finalidades:** crear y operar su cuenta, relacionar inmuebles con personas y gestionar su documentación, cobrar la suscripción, enviar correos operativos, brindar soporte y dar seguridad. Adicionalmente, y salvo que usted se oponga, usamos sus datos de forma disociada o agregada para construir nuestras bases de datos y desarrollar y mejorar herramientas de inteligencia artificial. No usamos sus datos para publicidad.",
@@ -208,6 +208,5 @@ export const simplifiedNotice = {
     "**Transferencias:** compartimos datos con proveedores de infraestructura y servicios, algunos fuera de México (Estados Unidos y Unión Europea), y con Stripe para el cobro, necesario para el servicio.",
     `**Derechos ARCO y revocación:** escriba a ${CONTACT}. Consulte el [[top|aviso integral]] en esta página.`,
   ],
-  check: "He leído y acepto el aviso de privacidad y los términos y condiciones, incluido el tratamiento de mis datos patrimoniales y financieros y las transferencias descritas.",
   footnote: "Cuando un cliente de la plataforma captura datos de sus compradores, inquilinos o residentes, es ese cliente quien debe mostrar su propio aviso y recabar el consentimiento.",
 };
