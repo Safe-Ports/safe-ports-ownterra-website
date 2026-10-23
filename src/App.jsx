@@ -264,7 +264,9 @@ export default function App() {
             </a>
           ))}
           <button className="lx-lang" onClick={() => setLang(lang === "es" ? "en" : "es")}>{t.locale}</button>
-          <a className="lx-navCta" href={asset("/hub.html")}>{t.apps}</a>
+          <a className="lx-navCta" href={asset("/hub.html")} aria-label={t.apps || (lang === "es" ? "Explorar aplicaciones" : "Explore applications")}>
+            {t.apps || (lang === "es" ? "Explorar aplicaciones" : "Explore applications")}
+          </a>
         </nav>
       </header>
 
