@@ -13,6 +13,7 @@ const productDetails = {
     canOpenApp: true,
     transparency: `Aplicación web disponible por suscripción mensual, con prueba gratuita de ${landsTrial.days} días sin tarjeta.`,
     pricing: true,
+    scopeTitle: "Un alcance completo para vender y operar terrenos.",
     outcomes: ["Una fuente confiable para tu inventario", "Cada oportunidad conectada con su lote", "Más visibilidad para decidir y cobrar a tiempo"],
     audienceTitle: "Diseñado para quienes comercializan terrenos.",
     audienceBody: "Lands se adapta a distintas formas de trabajar: desde una persona que gestiona sus propios lotes hasta una organización con varios proyectos y colaboradores. Todos pueden trabajar con la misma información y un proceso más ordenado.",
@@ -41,6 +42,7 @@ const productDetails = {
     appPath: "/properties",
     canOpenApp: true,
     transparency: "Vista previa funcional. El núcleo de propietarios, propiedades, unidades, imágenes y permisos está en prototipo frontend; comunidades, rentas, ventas, hospitalidad, servicios, portales y reportes se muestran como capacidades en desarrollo y gran parte usa datos demo o locales.",
+    scopeTitle: "Una base común para administrar y operar inmuebles.",
     outcomes: ["Un portafolio conectado con sus personas", "Contexto por propiedad, unidad y operación", "Una base para administrar, rentar y comercializar"],
     audienceTitle: "Para quienes administran, rentan u operan inmuebles.",
     audienceBody: "Properties está pensado para personas y organizaciones con una o muchas propiedades: administradores independientes, empresas de administración, propietarios, family offices, operadores de renta, comunidades y equipos que comercializan inmuebles terminados.",
@@ -68,6 +70,7 @@ const productDetails = {
     intro: "Construction explora cómo conectar estructura de obra, presupuestos y avance. No es una vertical operativa de Own Terra y no tiene rutas activas en la aplicación autenticada.",
     canOpenApp: false,
     transparency: "Concepto exploratorio. El comprador, alcance, reglas operativas, integración y prioridad de implementación todavía requieren aprobación.",
+    scopeTitle: "Una exploración de producto por validar.",
     outcomes: ["Concepto, no producto activo", "Sin módulo operativo autenticado", "Alcance y prioridad por validar"],
     features: [
       ["Estructura de obra", "Hipótesis para organizar proyectos, fases, partidas y conceptos dentro de una futura experiencia."],
@@ -190,7 +193,7 @@ export default function ProductLanding({ productKey }) {
         <section className="lxp-section lx-shell" id="funciones">
           <header className="lxp-sectionHead">
             <small className="lx-label">Alcance actual</small>
-            <h2 className="lx-h2">Un alcance completo para vender y operar terrenos.</h2>
+            <h2 className="lx-h2">{details.scopeTitle}</h2>
           </header>
           <div className="lxp-features">
             {details.features.map(([title, body], index) => {
