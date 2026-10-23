@@ -7,19 +7,19 @@ import { asset } from "./lib/url";
 const productDetails = {
   lands: {
     eyebrow: "Operación comercial de terrenos",
-    title: "Convierte tu inventario de tierra en una operación comercial ordenada.",
-    intro: "Lands reúne en un solo lugar la información que tu equipo necesita para vender terrenos: fraccionamientos, planos, lotes, disponibilidad, clientes, citas, cotizaciones, contratos, pagos, documentos y reportes.",
+    title: "Del plano al contrato, sin perder el control.",
+    intro: "Lands reúne en un solo lugar la información que necesitas para comercializar terrenos, ya seas una persona independiente, un asesor, una organización o un negocio con equipo: fraccionamientos, planos, lotes, disponibilidad, clientes, citas, cotizaciones, contratos, pagos, documentos y reportes.",
     appPath: "/dashboard",
     canOpenApp: true,
     transparency: `Aplicación web disponible por suscripción mensual, con prueba gratuita de ${landsTrial.days} días sin tarjeta.`,
     pricing: true,
     outcomes: ["Una fuente confiable para tu inventario", "Cada oportunidad conectada con su lote", "Más visibilidad para decidir y cobrar a tiempo"],
-    audienceTitle: "Diseñado para negocios que venden tierra.",
-    audienceBody: "Ya seas una desarrolladora con varios proyectos, una fraccionadora que coordina inventario y ventas, o una inmobiliaria que comercializa lotes de distintos proyectos, Lands te ayuda a trabajar con la misma información y el mismo proceso.",
+    audienceTitle: "Diseñado para quienes comercializan terrenos.",
+    audienceBody: "Lands se adapta a distintas formas de trabajar: desde una persona que gestiona sus propios lotes hasta una organización con varios proyectos y colaboradores. Todos pueden trabajar con la misma información y un proceso más ordenado.",
     audience: [
-      ["Desarrolladoras", "Controla proyectos, etapas, precios y disponibilidad mientras tu operación crece."],
-      ["Fraccionadoras", "Mantén el plano, el inventario y la actividad comercial alineados en un mismo sistema."],
-      ["Equipos comerciales", "Da seguimiento a clientes, citas y cotizaciones sin perder el contexto del lote."],
+      ["Personas y agentes independientes", "Organiza tus lotes, clientes, citas, cotizaciones y documentos desde un mismo lugar."],
+      ["Negocios y organizaciones", "Controla proyectos, etapas, precios y disponibilidad mientras tu operación crece."],
+      ["Equipos comerciales", "Comparte información y da seguimiento a clientes sin perder el contexto del lote."],
     ],
     features: [
       ["Inventario y planos", "Organiza cada fraccionamiento y sus lotes con superficies, precios, estatus, disponibilidad y referencia visual del plano."],
