@@ -8,6 +8,7 @@ const text = {
   es: {
     locale: "English",
     nav: ["El ciclo", "Ecosistema", "Cómo funciona", "Precios", "Acceso"],
+    apps: "Explorar aplicaciones",
     contact: "Solicitar demo",
     access: "Ingresar a Own Terra",
     accessPending: "Solicitar acceso",
@@ -88,6 +89,7 @@ const text = {
   en: {
     locale: "Español",
     nav: ["The cycle", "Ecosystem", "How it works", "Pricing", "Sign in"],
+    apps: "Explore applications",
     contact: "Request a demo",
     access: "Open Own Terra",
     accessPending: "Request access",
@@ -255,14 +257,14 @@ export default function App() {
           {t.nav.map((item, index) => (
             <a
               key={item}
-              href={["#ciclo", "#services", "#work", asset("/lands.html#precios"), "#client-access"][index]}
+              href={["#ciclo", asset("/hub.html"), "#work", asset("/lands.html#precios"), "#client-access"][index]}
               onClick={() => setMenu(false)}
             >
               {item}
             </a>
           ))}
           <button className="lx-lang" onClick={() => setLang(lang === "es" ? "en" : "es")}>{t.locale}</button>
-          <a className="lx-navCta" href="#contact">{t.contact}</a>
+          <a className="lx-navCta" href={asset("/hub.html")}>{t.apps}</a>
         </nav>
       </header>
 
