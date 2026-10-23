@@ -257,14 +257,14 @@ export default function App() {
           {t.nav.map((item, index) => (
             <a
               key={item}
-              href={["#ciclo", asset("/hub.html"), "#work", asset("/lands.html#precios"), "#client-access"][index]}
+              href={["#ciclo", "#apps", "#work", asset("/lands.html#precios"), "#client-access"][index]}
               onClick={() => setMenu(false)}
             >
               {item}
             </a>
           ))}
           <button className="lx-lang" onClick={() => setLang(lang === "es" ? "en" : "es")}>{t.locale}</button>
-          <a className="lx-navCta" href={asset("/hub.html")} aria-label={t.apps || (lang === "es" ? "Explorar aplicaciones" : "Explore applications")}>
+          <a className="lx-navCta" href="#apps" aria-label={t.apps || (lang === "es" ? "Explorar aplicaciones" : "Explore applications")}>
             {t.apps || (lang === "es" ? "Explorar aplicaciones" : "Explore applications")}
           </a>
         </nav>
@@ -366,7 +366,7 @@ export default function App() {
         </section>
 
         {/* Cada producto ocupa el ancho completo; la imagen llega al borde. */}
-        <section className="lx-bleed">
+        <section className="lx-bleed" id="apps">
           {publicProducts.map((product, index) => (
             <article key={product.key} className={`lx-feature status-${product.status} reveal`}>
               <a
@@ -422,7 +422,7 @@ export default function App() {
               </ul>
               <div className="lx-processActions">
                 <a className="lx-btn lx-btn--line" href="#contact">{t.build}<ArrowRight /></a>
-                <a className="lx-link" href={asset("/hub.html")}>{t.discoverCta}<ArrowRight /></a>
+                <a className="lx-link" href="#apps">{t.discoverCta}<ArrowRight /></a>
               </div>
             </div>
             <div className="lx-processMedia">
