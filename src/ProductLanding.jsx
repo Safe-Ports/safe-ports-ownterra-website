@@ -36,16 +36,26 @@ const productDetails = {
   },
   properties: {
     eyebrow: "Administración y operación de inmuebles",
-    title: "Una jerarquía para cada propiedad y sus unidades.",
-    intro: "Properties parte de Organización → Propiedad → Unidad/Espacio para representar una casa, edificio, comunidad, plaza, hotel, oficina, bodega o inmueble mixto.",
+    title: "Una sola operación para cada propiedad, unidad y persona.",
+    intro: "Properties centraliza el portafolio y las operaciones alrededor de inmuebles existentes: propietarios, propiedades, unidades, comunidades, rentas, ventas, servicios, documentos y seguimiento, desde una misma plataforma.",
     appPath: "/properties",
     canOpenApp: true,
-    transparency: "Vista previa conectada. Propietarios, propiedades, unidades, comunidades, amenidades, votaciones, paquetería, cargos y el portal de residentes ya operan contra la API de Properties, con aislamiento por organización. Rentas, hospitalidad, marketplace, servicios y mantenimiento siguen con datos demo o locales.",
-    outcomes: ["Portafolio relacionado con propietarios", "Estados por propiedad y unidad", "Rutas de comunidad, renta y operación"],
+    transparency: "Vista previa funcional. El núcleo de propietarios, propiedades, unidades, imágenes y permisos está en prototipo frontend; comunidades, rentas, ventas, hospitalidad, servicios, portales y reportes se muestran como capacidades en desarrollo y gran parte usa datos demo o locales.",
+    outcomes: ["Un portafolio conectado con sus personas", "Contexto por propiedad, unidad y operación", "Una base para administrar, rentar y comercializar"],
+    audienceTitle: "Para quienes administran, rentan u operan inmuebles.",
+    audienceBody: "Properties está pensado para personas y organizaciones con una o muchas propiedades: administradores independientes, empresas de administración, propietarios, family offices, operadores de renta, comunidades y equipos que comercializan inmuebles terminados.",
+    audience: [
+      ["Administradores y administradoras", "Coordina propiedades, unidades, personas, incidencias y documentos con una vista ordenada de la operación."],
+      ["Propietarios y portafolios", "Relaciona tus activos, unidades y responsables para consultar el estado de cada inmueble con mayor claridad."],
+      ["Rentas, comunidades y ventas", "Prepara una operación conectada para administrar comunidades, rentar unidades o comercializar propiedades construidas."],
+    ],
     features: [
-      ["Portafolio base", "Explora propietarios, propiedades, imágenes y unidades sin perder sus relaciones jerárquicas."],
-      ["Comunidades y rentas", "Previsualiza cargos, servicios, amenidades, publicaciones, prospectos, contratos y operación de hospedaje."],
-      ["Operación por unidad", "Previsualiza estados, tickets, accesos, proveedores, servicios y monitoreo dentro del mismo contexto."],
+      ["Portafolio conectado", "Relaciona propietarios, propiedades, unidades, imágenes, documentos y actividad bajo la estructura Organización → Propiedad → Unidad/Espacio."],
+      ["Comunidades", "Organiza directorios, cargos, comunicados, amenidades, votaciones, accesos y paquetería alrededor de una comunidad."],
+      ["Rentas y ocupación", "Da contexto a disponibilidad, prospectos, inquilinos, contratos, cobros, renovaciones e inspecciones por propiedad y unidad."],
+      ["Venta de inmuebles", "Prepara publicaciones, prospectos, visitas, ofertas y seguimiento comercial para propiedades ya construidas."],
+      ["Servicios y mantenimiento", "Conecta tickets, proveedores, servicios, utilidades y evidencias con el inmueble donde ocurre cada situación."],
+      ["Portales y reportes", "Construye experiencias con permisos para propietarios, residentes, inquilinos, comités, proveedores y personas con acceso de consulta."],
     ],
     shots: [["/screenshots/properties-operations.jpg", "Vista previa de operación"], ["/screenshots/properties-portfolio.jpg", "Vista previa del portafolio"]],
     galleryLabel: "VISTA PREVIA CONECTADA",
@@ -197,7 +207,7 @@ export default function ProductLanding({ productKey }) {
           </div>
         </section>
 
-        {productKey === "lands" && (
+        {details.audience && (
           <section className="lxp-section lx-shell lxp-audience">
             <header className="lxp-sectionHead">
               <small className="lx-label">Para quién es Lands</small>
