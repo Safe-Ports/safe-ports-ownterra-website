@@ -199,6 +199,14 @@
 
 .lxp-feature p { margin: 0; font-size: 14.5px; line-height: 1.8; font-weight: 300; color: var(--ink-soft); }
 
+/* ---------- Audiencia ---------- */
+
+.lxp-audience { padding-top: clamp(8px, 2vh, 24px); }
+.lxp-audienceGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule-soft); }
+.lxp-audienceCard { position: relative; min-height: 190px; padding: 34px 32px; background: var(--stone-1); }
+.lxp-audienceCard h3 { margin: 0 0 12px; padding-right: 42px; font: 400 23px/1.2 var(--serif); color: var(--ink); }
+.lxp-audienceCard p { margin: 0; font-size: 14.5px; line-height: 1.8; font-weight: 300; color: var(--ink-soft); }
+
 /* ---------- Galería ---------- */
 
 /* Rejilla pareja: con dos o cuatro capturas siempre cierra en filas completas. */
@@ -349,7 +357,7 @@
 /* ---------- Responsive ---------- */
 
 @media (max-width: 1000px) {
-  .lxp-features, .lxp-outcomes { grid-template-columns: 1fr; }
+  .lxp-features, .lxp-outcomes, .lxp-audienceGrid { grid-template-columns: 1fr; }
   .lxp-plans { grid-template-columns: repeat(2, 1fr); }
   .lxp-featureNum { top: 34px; }
 }

@@ -7,17 +7,27 @@ import { asset } from "./lib/url";
 const productDetails = {
   lands: {
     eyebrow: "Operación comercial de terrenos",
-    title: "Del plano al contrato, sin perder el control.",
-    intro: "Conecta fraccionamientos, lotes, disponibilidad, clientes, citas, cotizaciones, contratos, pagos, documentos y reportes para equipos que venden tierra.",
+    title: "Convierte tu inventario de tierra en una operación comercial ordenada.",
+    intro: "Lands reúne en un solo lugar la información que tu equipo necesita para vender terrenos: fraccionamientos, planos, lotes, disponibilidad, clientes, citas, cotizaciones, contratos, pagos, documentos y reportes.",
     appPath: "/dashboard",
     canOpenApp: true,
     transparency: `Aplicación web disponible por suscripción mensual, con prueba gratuita de ${landsTrial.days} días sin tarjeta.`,
     pricing: true,
-    outcomes: ["Inventario organizado por fraccionamiento", "Seguimiento comercial conectado al lote", "Contratos, cobranza y documentos relacionados"],
+    outcomes: ["Una fuente confiable para tu inventario", "Cada oportunidad conectada con su lote", "Más visibilidad para decidir y cobrar a tiempo"],
+    audienceTitle: "Diseñado para negocios que venden tierra.",
+    audienceBody: "Ya seas una desarrolladora con varios proyectos, una fraccionadora que coordina inventario y ventas, o una inmobiliaria que comercializa lotes de distintos proyectos, Lands te ayuda a trabajar con la misma información y el mismo proceso.",
+    audience: [
+      ["Desarrolladoras", "Controla proyectos, etapas, precios y disponibilidad mientras tu operación crece."],
+      ["Fraccionadoras", "Mantén el plano, el inventario y la actividad comercial alineados en un mismo sistema."],
+      ["Equipos comerciales", "Da seguimiento a clientes, citas y cotizaciones sin perder el contexto del lote."],
+    ],
     features: [
-      ["Inventario visual", "Organiza fraccionamientos y lotes con estatus, superficies, precios, disponibilidad y referencia de plano."],
-      ["Clientes y seguimiento", "Relaciona clientes, asesores, citas y oportunidades con el inventario comercial."],
-      ["Contratos y cobranza", "Conecta la operación con contratos, planes de pago, documentos, vencimientos y reportes."],
+      ["Inventario y planos", "Organiza cada fraccionamiento y sus lotes con superficies, precios, estatus, disponibilidad y referencia visual del plano."],
+      ["Comercialización conectada", "Relaciona clientes, asesores, citas y cotizaciones con el lote correcto para que cada oportunidad tenga contexto y seguimiento."],
+      ["Cotización y cierre", "Lleva la conversación comercial desde la selección del lote hasta la cotización y el avance del cierre."],
+      ["Contratos y pagos", "Consulta la información relacionada con contratos, planes de pago, vencimientos y cobranza sin separar la operación del expediente."],
+      ["Documentos en contexto", "Centraliza los documentos de cada operación para que el equipo encuentre lo que necesita cuando lo necesita."],
+      ["Reportes para decidir", "Obtén una lectura más clara del inventario, la actividad comercial y el estado de tus operaciones para actuar con oportunidad."],
     ],
     shots: [["/app/fraccionamiento.jpg", "Inventario y plano del fraccionamiento"], ["/app/track-lotes.jpg", "Seguimiento de lotes y cierres"], ["/app/clientes.jpg", "Clientes conectados al core"], ["/app/dashboard.jpg", "Panel comercial"]],
     galleryLabel: "EL PRODUCTO EN ACCIÓN",
@@ -170,7 +180,7 @@ export default function ProductLanding({ productKey }) {
         <section className="lxp-section lx-shell" id="funciones">
           <header className="lxp-sectionHead">
             <small className="lx-label">Alcance actual</small>
-            <h2 className="lx-h2">Qué representa hoy esta experiencia.</h2>
+            <h2 className="lx-h2">Un alcance completo para vender y operar terrenos.</h2>
           </header>
           <div className="lxp-features">
             {details.features.map(([title, body], index) => {
@@ -186,6 +196,25 @@ export default function ProductLanding({ productKey }) {
             })}
           </div>
         </section>
+
+        {productKey === "lands" && (
+          <section className="lxp-section lx-shell lxp-audience">
+            <header className="lxp-sectionHead">
+              <small className="lx-label">Para quién es Lands</small>
+              <h2 className="lx-h2">{details.audienceTitle}</h2>
+              <p className="lx-lead">{details.audienceBody}</p>
+            </header>
+            <div className="lxp-audienceGrid">
+              {details.audience.map(([title, body], index) => (
+                <article key={title} className="lxp-audienceCard">
+                  <span className="lxp-featureNum">0{index + 1}</span>
+                  <h3>{title}</h3>
+                  <p>{body}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
 
         {details.pricing && <Pricing trialHref={appBase || asset("/#contact")} external={appBase ? { target: "_blank", rel: "noreferrer" } : {}} />}
 
