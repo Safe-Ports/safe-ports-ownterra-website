@@ -59,7 +59,7 @@ const productDetails = {
       ["Servicios y mantenimiento", "Conecta tickets, proveedores, servicios, utilidades y evidencias con el inmueble donde ocurre cada situación."],
       ["Portales y reportes", "Construye experiencias con permisos para propietarios, residentes, inquilinos, comités, proveedores y personas con acceso de consulta."],
     ],
-    shots: [["/screenshots/properties-operations.jpg", "Vista previa de operación"], ["/screenshots/properties-portfolio.jpg", "Vista previa del portafolio"]],
+    shots: [["/screenshots/properties-today.jpg", "Inicio del día y pendientes"], ["/screenshots/properties-portfolio.jpg", "Comunidades del portafolio"], ["/screenshots/properties-operations.jpg", "Cuotas, cargos y adeudos"], ["/screenshots/properties-reports.jpg", "Reporte de la comunidad"]],
     galleryLabel: "VISTA PREVIA CONECTADA",
     galleryTitle: "Así se organiza la experiencia de Properties.",
     galleryBody: "Estas pantallas sirven para validar el producto; no representan todavía una integración productiva completa.",
