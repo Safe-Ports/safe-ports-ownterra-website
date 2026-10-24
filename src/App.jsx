@@ -1,14 +1,21 @@
 import { useEffect, useState } from "react";
-import { ArrowRight, Check, LogIn, Menu, ShieldCheck, X } from "lucide-react";
+import { ArrowRight, LogIn, Menu, ShieldCheck, X } from "lucide-react";
 import { getPublicProduct, publicProducts } from "./data/publicProducts";
 import SiteFooter from "./components/SiteFooter";
-import { asset } from "./lib/url";
+import { appLink, asset } from "./lib/url";
 
 const text = {
   es: {
     locale: "English",
     nav: ["El ciclo", "Ecosistema", "Cómo funciona", "Precios", "Acceso"],
-    apps: "Explorar aplicaciones",
+    tryNow: "Pruébalo ahora",
+    signIn: "Iniciar sesión",
+    demo: "Agendar demo",
+    tryNote: "Crea tu cuenta en minutos y entra directo a la aplicación.",
+    tryProduct: "Probar",
+    startTag: "Empieza hoy",
+    startTitle: "Tu operación, dentro de Own Terra desde hoy.",
+    startBody: "Crea tu cuenta y configura tu organización en minutos. Si ya tienes acceso, inicia sesión; si prefieres que te lo mostremos, agenda una demo.",
     contact: "Solicitar demo",
     access: "Ingresar a Own Terra",
     accessPending: "Solicitar acceso",
@@ -16,8 +23,6 @@ const text = {
     title: "Todo el ciclo inmobiliario.",
     accent: "Una sola plataforma.",
     intro: "Desde el terreno hasta la propiedad terminada. Own Terra conecta adquisición, ventas, construcción, administración, renta y comercialización en un solo ecosistema.",
-    primary: "Ver el ciclo completo",
-    secondary: "Solicitar demo",
     built: "Para equipos de",
     sectors: ["Lotificación", "Construcción", "Administración", "Rentas", "Comercialización"],
     cycleTag: "El ciclo completo",
@@ -89,7 +94,14 @@ const text = {
   en: {
     locale: "Español",
     nav: ["The cycle", "Ecosystem", "How it works", "Pricing", "Sign in"],
-    apps: "Explore applications",
+    tryNow: "Try it now",
+    signIn: "Sign in",
+    demo: "Book a demo",
+    tryNote: "Create your account in minutes and go straight into the app.",
+    tryProduct: "Try",
+    startTag: "Start today",
+    startTitle: "Your operation, inside Own Terra today.",
+    startBody: "Create your account and set up your organization in minutes. If you already have access, sign in; if you would rather see it first, book a demo.",
     contact: "Request a demo",
     access: "Open Own Terra",
     accessPending: "Request access",
@@ -97,8 +109,6 @@ const text = {
     title: "The whole real-estate cycle.",
     accent: "One single platform.",
     intro: "From raw land to the finished property. Own Terra connects acquisition, sales, construction, administration, rental, and commercialization in one ecosystem.",
-    primary: "See the full cycle",
-    secondary: "Request a demo",
     built: "For teams in",
     sectors: ["Land subdivision", "Construction", "Management", "Rentals", "Commercialization"],
     cycleTag: "The full cycle",
@@ -219,7 +229,11 @@ export default function App() {
   const [lang, setLang] = useState("es");
   const [menu, setMenu] = useState(false);
   const t = text[lang];
-  const configuredAppUrl = import.meta.env.VITE_OWN_TERRA_URL?.trim();
+  const configuredAppUrl = appLink("/");
+  // Sin la URL de la app configurada, los botones de prueba llevan al formulario.
+  const signupUrl = appLink("/", { registro: true }) || "#contact";
+  const loginUrl = configuredAppUrl || "#client-access";
+  const appTarget = configuredAppUrl ? { target: "_blank", rel: "noreferrer" } : {};
   const navOver = useNavOverCover();
   useReveal();
 
@@ -257,15 +271,16 @@ export default function App() {
           {t.nav.map((item, index) => (
             <a
               key={item}
-              href={["#ciclo", "#apps", "#work", asset("/lands.html#precios"), "#client-access"][index]}
+              href={["#ciclo", "#apps", "#work", asset("/lands.html#precios"), loginUrl][index]}
+              {...(index === 4 ? appTarget : {})}
               onClick={() => setMenu(false)}
             >
               {item}
             </a>
           ))}
           <button className="lx-lang" onClick={() => setLang(lang === "es" ? "en" : "es")}>{t.locale}</button>
-          <a className="lx-navCta" href="#apps" aria-label={t.apps || (lang === "es" ? "Explorar aplicaciones" : "Explore applications")}>
-            {t.apps || (lang === "es" ? "Explorar aplicaciones" : "Explore applications")}
+          <a className="lx-navCta" href={signupUrl} {...appTarget} onClick={() => setMenu(false)}>
+            {t.tryNow}
           </a>
         </nav>
       </header>
@@ -286,9 +301,11 @@ export default function App() {
             <h1 className="lx-coverTitle">{t.title}<em>{t.accent}</em></h1>
             <p className="lx-coverIntro">{t.intro}</p>
             <div className="lx-coverActions">
-              <a className="lx-btn lx-btn--solid" href="#ciclo">{t.primary}<ArrowRight /></a>
-              <a className="lx-btn lx-btn--line" href="#contact">{t.secondary}</a>
+              <a className="lx-btn lx-btn--solid lx-btn--xl" href={signupUrl} {...appTarget}>{t.tryNow}<ArrowRight /></a>
+              <a className="lx-btn lx-btn--line lx-btn--xl" href={loginUrl} {...appTarget}>{t.signIn}<LogIn /></a>
+              <a className="lx-coverDemo" href="#contact">{t.demo}<ArrowRight /></a>
             </div>
+            <p className="lx-coverNote">{t.tryNote}</p>
           </div>
           <div className="lx-coverStrip lx-gutter">
             <small>{t.built}</small>
@@ -389,7 +406,14 @@ export default function App() {
                 <div className="lx-tags">
                   {product.tags[lang].map((tag) => <span key={tag}>{tag}</span>)}
                 </div>
-                <a className="lx-link" href={asset(product.landing)}>{product.cta[lang]}<ArrowRight /></a>
+                <div className="lx-featureActions">
+                  {product.status !== "exploration" && (
+                    <a className="lx-btn lx-btn--solid" href={signupUrl} {...appTarget}>
+                      {t.tryProduct} {product.name.replace(/^OwnTerra\s*/, "")}<ArrowRight />
+                    </a>
+                  )}
+                  <a className="lx-link" href={asset(product.landing)}>{product.cta[lang]}<ArrowRight /></a>
+                </div>
               </div>
             </article>
           ))}
@@ -451,6 +475,20 @@ export default function App() {
                 <p>{body}</p>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* Llamado final: todo el sitio desemboca en entrar a la aplicación. */}
+        <section className="lx-start lx-bleed" id="empieza">
+          <div className="lx-startInner lx-gutter reveal">
+            <small className="lx-label">{t.startTag}</small>
+            <h2>{t.startTitle}</h2>
+            <p>{t.startBody}</p>
+            <div className="lx-startActions">
+              <a className="lx-btn lx-btn--solid lx-btn--xl" href={signupUrl} {...appTarget}>{t.tryNow}<ArrowRight /></a>
+              <a className="lx-btn lx-btn--line lx-btn--xl" href={loginUrl} {...appTarget}>{t.signIn}<LogIn /></a>
+              <a className="lx-btn lx-btn--line lx-btn--xl" href="#contact">{t.demo}</a>
+            </div>
           </div>
         </section>
 

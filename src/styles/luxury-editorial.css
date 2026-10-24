@@ -62,12 +62,10 @@
 .lx-nav.is-over .lx-brand b { color: var(--stone-0); }
 .lx-nav.is-over .lx-brandMark .lx-markInk { display: none; }
 .lx-nav.is-over .lx-brandMark .lx-markLight { display: block; }
-.lx-nav.is-over .lx-links > a,
+.lx-nav.is-over .lx-links > a:not(.lx-navCta),
 .lx-nav.is-over .lx-lang { color: rgba(253, 251, 247, 0.82); }
-.lx-nav.is-over .lx-links > a:hover,
+.lx-nav.is-over .lx-links > a:not(.lx-navCta):hover,
 .lx-nav.is-over .lx-lang:hover { color: var(--stone-0); }
-.lx-nav.is-over .lx-navCta { border-color: rgba(253, 251, 247, 0.5); color: var(--stone-0); }
-.lx-nav.is-over .lx-navCta:hover { background: var(--stone-0); color: var(--ink); }
 .lx-nav.is-over .lx-menu { color: var(--stone-0); }
 
 /* ---------- Portada cinematográfica ---------- */
@@ -148,8 +146,71 @@
 
 .lx-coverActions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 38px; }
 
+.lx-coverActions { align-items: center; }
 .lx-coverActions .lx-btn--line { border-color: rgba(253, 251, 247, 0.45); color: var(--stone-0); }
 .lx-coverActions .lx-btn--line:hover { background: rgba(253, 251, 247, 0.12); border-color: var(--stone-0); }
+
+.lx-coverDemo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 10px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(253, 251, 247, 0.45);
+  color: var(--stone-0);
+  font: 500 11.5px/1 var(--sans);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: gap 0.25s ease, border-color 0.25s ease;
+}
+.lx-coverDemo svg { width: 14px; height: 14px; }
+.lx-coverDemo:hover { gap: 15px; border-color: var(--stone-0); }
+
+.lx-coverNote {
+  margin: 18px 0 0;
+  font-size: 13.5px;
+  color: rgba(253, 251, 247, 0.72);
+}
+
+/* Acciones de cada producto: probar en la app y, al lado, conocer más. */
+.lx-featureActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px 28px;
+  margin-top: 30px;
+}
+.lx-featureActions .lx-link { margin-top: 0; }
+
+/* Llamado final antes del acceso y el formulario. */
+.lx-start {
+  padding-block: clamp(80px, 12vh, 150px);
+  background: var(--ink);
+  color: var(--stone-0);
+  text-align: center;
+}
+.lx-startInner { display: grid; justify-items: center; gap: 22px; }
+.lx-startInner h2 {
+  margin: 0;
+  max-width: 20ch;
+  font: 400 clamp(36px, 5vw, 64px)/1.08 var(--serif);
+}
+.lx-startInner p {
+  margin: 0;
+  max-width: 58ch;
+  font-size: clamp(15.5px, 1.4vw, 18px);
+  line-height: 1.75;
+  color: rgba(253, 251, 247, 0.78);
+}
+.lx-startActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 18px;
+}
+.lx-startActions .lx-btn--line { border-color: rgba(253, 251, 247, 0.45); color: var(--stone-0); }
+.lx-startActions .lx-btn--line:hover { background: rgba(253, 251, 247, 0.12); border-color: var(--stone-0); }
 
 /* Cinta inferior: sectores, sin píldoras ni cajas. */
 .lx-coverStrip {
@@ -599,7 +660,10 @@
   .lx-processMedia { margin-inline: calc(var(--edge) * -1); }
   .lx-entryMedia { margin-inline: calc(var(--edge) * -1); }
 
-  .lx-coverActions .lx-btn { width: 100%; }
+  .lx-coverActions .lx-btn,
+  .lx-startActions .lx-btn,
+  .lx-featureActions .lx-btn { width: 100%; }
+  .lx-coverDemo { margin: 6px auto 0; }
 }
 
 @media (max-width: 560px) {

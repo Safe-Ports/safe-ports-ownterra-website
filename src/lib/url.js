@@ -8,3 +8,16 @@
  */
 export const asset = (path = "/") =>
   `${import.meta.env.BASE_URL}${String(path).replace(/^\//, "")}`;
+
+/**
+ * Liga a la aplicación de Own Terra (VITE_OWN_TERRA_URL), o `null` si el
+ * despliegue no la configura. Con `registro` la app abre directo el alta de
+ * cuenta en lugar del inicio de sesión.
+ */
+export function appLink(path = "/", { registro = false } = {}) {
+  const base = import.meta.env.VITE_OWN_TERRA_URL?.trim();
+  if (!base) return null;
+  const url = new URL(String(path).replace(/^\//, ""), `${base.replace(/\/+$/, "")}/`);
+  if (registro) url.searchParams.set("registro", "1");
+  return url.toString();
+}
