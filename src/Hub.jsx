@@ -1,7 +1,7 @@
-import { ArrowLeft, ArrowRight, Check } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, LogIn } from "lucide-react";
 import { publicProducts } from "./data/publicProducts";
 import SiteFooter from "./components/SiteFooter";
-import { asset } from "./lib/url";
+import { appLink, asset } from "./lib/url";
 
 const Brand = () => (
   <a className="lx-brand" href={asset("/")}>
@@ -91,28 +91,64 @@ const statusLegend = [
 
 const statusOrder = { implemented: 0, prototype: 1, exploration: 2 };
 
+// Capturas reales de la aplicación: lo que Core comparte entre verticales.
+const insideShots = [
+  ["/app/clientes.jpg", "Clientes compartidos", "Una sola ficha por persona, visible desde cada aplicación habilitada."],
+  ["/app/track-lotes.jpg", "Seguimiento en Lands", "Cada lote con su estado, su cliente y su avance comercial."],
+  ["/screenshots/properties-operations.jpg", "Cobranza en Properties", "Cuotas, cargos y adeudos por unidad, sin perder la comunidad."],
+];
+
+const hierShots = {
+  lands: ["/app/fraccionamiento.jpg", "Plano y matriz de lotes de un fraccionamiento en Lands"],
+  properties: ["/screenshots/properties-portfolio.jpg", "Comunidades del portafolio en Properties"],
+};
+
 export default function Hub() {
   const verticals = [...publicProducts].sort(
     (a, b) => statusOrder[a.status] - statusOrder[b.status],
   );
+  // Sin la URL de la app configurada, los botones de prueba llevan al formulario.
+  const appUrl = appLink("/");
+  const signupUrl = appLink("/", { registro: true }) || asset("/#contact");
+  const loginUrl = appUrl || asset("/#client-access");
+  const appTarget = appUrl ? { target: "_blank", rel: "noreferrer" } : {};
 
   return (
     <div className="lx-site">
       <header className="lx-nav">
         <Brand />
-        <a className="lxh-back" href={asset("/")}><ArrowLeft /><span>Volver al sitio</span></a>
+        <div className="lxh-navActions">
+          <a className="lxh-back" href={asset("/")}><ArrowLeft /><span>Volver al sitio</span></a>
+          <a className="lx-navCta" href={signupUrl} {...appTarget}>Pruébalo ahora</a>
+        </div>
       </header>
 
       <main id="top">
         <section className="lxh-hero lx-shell">
-          <p className="lx-eyebrow">El ecosistema</p>
-          <h1 className="lxh-title">Una sola plataforma para el activo, su gente y <em>su dinero.</em></h1>
-          <p className="lxh-intro">
-            Own Terra conecta el activo, las personas, la relación comercial, los documentos y el
-            evento financiero, para que los equipos dejen de reconstruir el mismo contexto en hojas
-            de cálculo y conversaciones sueltas. Es una plataforma de producto, no un conjunto de
-            aplicaciones sin relación.
-          </p>
+          <div className="lxh-heroCopy">
+            <p className="lx-eyebrow">El ecosistema</p>
+            <h1 className="lxh-title">Una sola plataforma para el activo, su gente y <em>su dinero.</em></h1>
+            <p className="lxh-intro">
+              Own Terra conecta el activo, las personas, la relación comercial, los documentos y el
+              evento financiero, para que los equipos dejen de reconstruir el mismo contexto en hojas
+              de cálculo y conversaciones sueltas. Es una plataforma de producto, no un conjunto de
+              aplicaciones sin relación.
+            </p>
+            <div className="lxh-heroActions">
+              <a className="lx-btn lx-btn--solid lx-btn--xl" href={signupUrl} {...appTarget}>Pruébalo ahora<ArrowRight /></a>
+              <a className="lx-btn lx-btn--line lx-btn--xl" href={loginUrl} {...appTarget}>Iniciar sesión<LogIn /></a>
+            </div>
+          </div>
+          {/* Foto del activo con la aplicación encima: el inmueble y su operación. */}
+          <div className="lxh-heroMedia" aria-hidden="true">
+            <picture className="lxh-heroPhoto">
+              <source srcSet={asset("/hero-residence.webp")} type="image/webp" />
+              <img src={asset("/hero-residence.jpg")} alt="" fetchPriority="high" />
+            </picture>
+            <div className="lxh-heroScreen">
+              <img src={asset("/app/ecosistema.jpg")} alt="" />
+            </div>
+          </div>
         </section>
 
         {/* Diagrama: verticales de dominio sobre el plano compartido de Core. */}
@@ -180,6 +216,9 @@ export default function Hub() {
           <div className="lxh-hier">
             {hierarchies.map((h) => (
               <div key={h.key} className="lxh-hierCol">
+                <figure className="lxh-hierShot">
+                  <img src={asset(hierShots[h.key][0])} alt={hierShots[h.key][1]} loading="lazy" />
+                </figure>
                 <small className="lx-label">{h.key === "lands" ? "Venta de tierra" : "Operación de inmuebles"}</small>
                 <h3>{h.name}</h3>
                 <p>{h.summary}</p>
@@ -194,6 +233,28 @@ export default function Hub() {
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* Por dentro: capturas reales sobre fondo oscuro. */}
+        <section className="lxh-inside">
+          <div className="lx-shell">
+            <header className="lxh-insideHead">
+              <small className="lx-label">Por dentro</small>
+              <h2>Así se ve la operación conectada.</h2>
+              <p>
+                Lo que Core comparte aparece igual en cada aplicación: la persona, sus documentos y
+                su historial viajan con ella de Lands a Properties.
+              </p>
+            </header>
+            <div className="lxh-insideGrid">
+              {insideShots.map(([src, title, body]) => (
+                <figure key={src} className="lxh-insideShot">
+                  <div className="lxh-insideFrame"><img src={asset(src)} alt={title} loading="lazy" /></div>
+                  <figcaption><b>{title}</b>{body}</figcaption>
+                </figure>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -288,14 +349,17 @@ export default function Hub() {
         <section className="lx-section lx-shell">
           <div className="lx-band">
             <div>
-              <small className="lx-label">Conversemos</small>
+              <small className="lx-label">Empieza hoy</small>
               <h2>¿Tu operación mezcla venta y administración?</h2>
               <p>
                 Lands y Properties comparten Core, así que una organización puede operar ambas sin
-                duplicar clientes, equipo ni documentos. Cuéntanos qué necesitas ordenar.
+                duplicar clientes, equipo ni documentos. Crea tu cuenta y pruébalo con tu operación.
               </p>
             </div>
-            <a className="lx-btn" href={asset("/#contact")}>Solicitar demo<ArrowRight /></a>
+            <div className="lxh-bandActions">
+              <a className="lx-btn lx-btn--solid lx-btn--xl" href={signupUrl} {...appTarget}>Pruébalo ahora<ArrowRight /></a>
+              <a className="lxh-bandLink" href={asset("/#contact")}>Agendar demo<ArrowRight /></a>
+            </div>
           </div>
           <div className="lxh-foot">
             <span>Own Terra · Ecosistema operativo para empresas inmobiliarias</span>

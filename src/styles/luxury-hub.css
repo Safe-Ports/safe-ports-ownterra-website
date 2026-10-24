@@ -21,7 +21,41 @@
 .lxh-back svg { width: 14px; height: 14px; }
 .lxh-back:hover { color: var(--terracotta); gap: 14px; }
 
-.lxh-hero { padding: clamp(64px, 9vh, 108px) 0 clamp(48px, 6vh, 76px); }
+.lxh-navActions { display: flex; align-items: center; gap: 28px; }
+
+/* Portada: texto con acciones a la izquierda; el inmueble y la app a la derecha. */
+.lxh-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: clamp(36px, 5vw, 80px);
+  align-items: center;
+  padding: clamp(56px, 8vh, 96px) 0 clamp(64px, 9vh, 112px);
+}
+
+.lxh-heroActions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 38px; }
+
+.lxh-heroMedia { position: relative; padding: 0 0 56px 56px; }
+
+.lxh-heroPhoto img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 62% center;
+}
+
+.lxh-heroScreen {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 78%;
+  padding: 8px;
+  background: var(--stone-0);
+  border: 1px solid var(--rule-soft);
+  box-shadow: 0 40px 80px -36px rgba(43, 38, 34, 0.55);
+}
+
+.lxh-heroScreen img { display: block; width: 100%; height: auto; }
 
 .lxh-title {
   margin: 30px 0 0;
@@ -203,6 +237,92 @@ a.lxh-vert:hover { background: var(--stone-1); }
 
 .lxh-hierCol { padding: 40px 36px; background: var(--stone-0); }
 
+.lxh-hierShot {
+  margin: 0 0 30px;
+  overflow: hidden;
+  border: 1px solid var(--rule-soft);
+  background: var(--stone-1);
+}
+
+.lxh-hierShot img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top left;
+  transition: transform 0.6s ease;
+}
+
+.lxh-hierCol:hover .lxh-hierShot img { transform: scale(1.025); }
+
+/* ---------- Por dentro: capturas sobre fondo oscuro ---------- */
+
+.lxh-inside {
+  margin-block: clamp(32px, 5vh, 56px);
+  padding-block: clamp(80px, 11vh, 130px);
+  background: var(--ink);
+  color: var(--stone-0);
+}
+
+.lxh-insideHead { max-width: 64ch; margin-bottom: clamp(40px, 5vh, 60px); }
+.lxh-insideHead .lx-label { color: var(--bronze); }
+.lxh-insideHead h2 { margin: 18px 0 0; font: 300 clamp(32px, 3.8vw, 52px)/1.12 var(--serif); }
+.lxh-insideHead p { margin: 20px 0 0; font-size: 16px; line-height: 1.8; font-weight: 300; color: rgba(253, 251, 247, 0.72); }
+
+.lxh-insideGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2vw, 28px); }
+
+.lxh-insideShot { margin: 0; }
+
+.lxh-insideFrame {
+  overflow: hidden;
+  padding: 6px;
+  background: rgba(253, 251, 247, 0.06);
+  border: 1px solid rgba(253, 251, 247, 0.14);
+}
+
+.lxh-insideFrame img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top left;
+  transition: transform 0.6s ease;
+}
+
+.lxh-insideShot:hover .lxh-insideFrame img { transform: scale(1.03); }
+
+.lxh-insideShot figcaption {
+  display: grid;
+  gap: 6px;
+  margin-top: 18px;
+  font-size: 14px;
+  line-height: 1.7;
+  font-weight: 300;
+  color: rgba(253, 251, 247, 0.68);
+}
+
+.lxh-insideShot figcaption b { font: 400 20px/1.25 var(--serif); color: var(--stone-0); }
+
+/* Cierre: probar en la app y, al lado, agendar demo. */
+.lxh-bandActions { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; flex: none; }
+.lx-band .lxh-bandActions .lx-btn--solid { background: var(--terracotta); color: var(--stone-0); }
+.lx-band .lxh-bandActions .lx-btn--solid:hover { background: var(--terracotta-deep); }
+
+.lxh-bandLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(253, 251, 247, 0.4);
+  color: var(--stone-0);
+  font: 500 11.5px/1 var(--sans);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: gap 0.25s ease, border-color 0.25s ease;
+}
+.lxh-bandLink svg { width: 14px; height: 14px; }
+.lxh-bandLink:hover { gap: 15px; border-color: var(--stone-0); }
+
 .lxh-hierCol h3 { margin: 18px 0 10px; font: 400 24px/1.2 var(--serif); color: var(--ink); }
 
 .lxh-hierCol > p { margin: 0 0 26px; font-size: 14.5px; line-height: 1.8; font-weight: 300; color: var(--ink-soft); }
@@ -360,6 +480,9 @@ a.lxh-vert:hover { background: var(--stone-1); }
 /* ---------- Responsive ---------- */
 
 @media (max-width: 1000px) {
+  .lxh-hero { grid-template-columns: 1fr; }
+  .lxh-heroMedia { max-width: 620px; }
+  .lxh-insideGrid { grid-template-columns: 1fr; max-width: 680px; }
   .lxh-flow { grid-template-columns: repeat(2, 1fr); }
   .lxh-apps { grid-template-columns: 1fr; }
   .lxh-rules { grid-template-columns: 1fr; gap: 32px; }
@@ -368,6 +491,12 @@ a.lxh-vert:hover { background: var(--stone-1); }
 @media (max-width: 860px) {
   /* En móvil la flecha basta: el rótulo hacía saltar de línea al logotipo. */
   .lxh-back span { display: none; }
+  .lxh-navActions { gap: 18px; }
+  .lxh-navActions .lx-navCta { margin-top: 0; padding: 12px 16px; }
+  .lxh-heroActions .lx-btn { width: 100%; }
+  .lxh-heroMedia { padding: 0 0 40px 28px; }
+  .lxh-heroScreen { width: 86%; }
+  .lxh-hierCol { padding: 28px 22px; }
 
   .lxh-verticals,
   .lxh-hier,
