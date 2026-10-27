@@ -35,6 +35,9 @@ jobs:
           # '' con dominio propio, '/<repo>' como project page.
           PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}
           VITE_OWN_TERRA_URL: ${{ vars.VITE_OWN_TERRA_URL }}
+          # Formulario de demo: endpoint público de core-back y llave pública de Turnstile.
+          VITE_CONTACT_API_URL: ${{ vars.VITE_CONTACT_API_URL }}
+          VITE_TURNSTILE_SITE_KEY: ${{ vars.VITE_TURNSTILE_SITE_KEY }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

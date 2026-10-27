@@ -623,6 +623,10 @@
 .lx-close .lx-field select:focus,
 .lx-close .lx-field textarea:focus { border-bottom-color: #e2a88f; }
 
+.lx-close .lx-formError { color: #e2a88f; }
+.lx-close .lx-sent h3 { color: var(--stone-0); }
+.lx-close .lx-sent p { color: rgba(253, 251, 247, 0.7); }
+
 .lx-close .lx-btn--solid { background: var(--stone-0); color: var(--ink); }
 .lx-close .lx-btn--solid:hover { background: #e2a88f; }
 

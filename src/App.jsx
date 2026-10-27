@@ -3,6 +3,7 @@ import { ArrowRight, LogIn, Menu, ShieldCheck, X } from "lucide-react";
 import { getPublicProduct, publicProducts } from "./data/publicProducts";
 import SiteFooter from "./components/SiteFooter";
 import { appLink, asset } from "./lib/url";
+import { contactApiUrl, sendContactRequest, turnstileSiteKey, useTurnstile } from "./lib/contact";
 
 const text = {
   es: {
@@ -88,6 +89,12 @@ const text = {
     operationOptions: ["Selecciona una opción", "Venta de terrenos o lotes", "Administración de propiedades", "Comunidades o condominios", "Rentas de largo plazo", "Hospedaje", "Operación mixta"],
     sizeOptions: ["Selecciona un rango", "1–20 activos", "21–100 activos", "101–500 activos", "Más de 500 activos", "Aún por definir"],
     send: "Preparar correo",
+    sendDirect: "Enviar solicitud",
+    sending: "Enviando…",
+    sentTitle: "Recibimos tu solicitud.",
+    sentBody: "Te escribiremos al correo que nos dejaste en los próximos días hábiles.",
+    sendError: "No pudimos enviar tu solicitud. Intenta de nuevo en unos minutos o escríbenos directamente.",
+    sendLimited: "Ya recibimos varias solicitudes desde tu conexión. Intenta más tarde o escríbenos directamente.",
     emailCta: "Escríbenos directamente",
     footer: "Ecosistema operativo para empresas inmobiliarias",
   },
@@ -174,6 +181,12 @@ const text = {
     operationOptions: ["Select an option", "Land or lot sales", "Property management", "Communities or condominiums", "Long-term rentals", "Hospitality", "Mixed operation"],
     sizeOptions: ["Select a range", "1–20 assets", "21–100 assets", "101–500 assets", "More than 500 assets", "Not defined yet"],
     send: "Prepare email",
+    sendDirect: "Send request",
+    sending: "Sending…",
+    sentTitle: "We received your request.",
+    sentBody: "We will write to the email you left us within the next few business days.",
+    sendError: "We could not send your request. Try again in a few minutes or email us directly.",
+    sendLimited: "We already received several requests from your connection. Try again later or email us directly.",
     emailCta: "Email us directly",
     footer: "Operating ecosystem for real-estate businesses",
   },
@@ -238,9 +251,12 @@ export default function App() {
   useReveal();
 
 
-  function submit(event) {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
+  // Con la API configurada el formulario manda la solicitud directo a nuestro
+  // buzón; sin ella, prepara el correo en la app del visitante como respaldo.
+  const [sendState, setSendState] = useState("idle");
+  const turnstileRef = useTurnstile();
+
+  function mailtoSubmit(data) {
     const subject = encodeURIComponent(`Demo Own Terra · ${data.get("company") || data.get("name")}`);
     const body = encodeURIComponent([
       data.get("challenge"),
@@ -253,6 +269,18 @@ export default function App() {
       `${t.labels[5]}: ${data.get("tools") || "—"}`,
     ].join("\n"));
     window.location.href = `mailto:safeports.contacto@gmail.com?subject=${subject}&body=${body}`;
+  }
+
+  async function submit(event) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    if (!contactApiUrl) return mailtoSubmit(data);
+    setSendState("sending");
+    const result = await sendContactRequest(data);
+    if (result === "sent") form.reset();
+    else window.turnstile?.reset();
+    setSendState(result);
   }
 
   return (
@@ -531,7 +559,15 @@ export default function App() {
               <a className="lx-closeMail" href="mailto:safeports.contacto@gmail.com">{t.emailCta}</a>
               <span className="lx-closePlace">México</span>
             </div>
+            {sendState === "sent" ? (
+              <div className="lx-form lx-sent" role="status">
+                <h3>{t.sentTitle}</h3>
+                <p>{t.sentBody}</p>
+              </div>
+            ) : (
             <form className="lx-form" onSubmit={submit}>
+              {/* Honeypot: invisible para personas, los bots lo llenan y el backend los descarta. */}
+              <label className="lx-trap" aria-hidden="true">Sitio web<input name="website" tabIndex={-1} autoComplete="off" /></label>
               <div className="lx-row">
                 <label className="lx-field"><span>{t.labels[0]}</span><input required name="name" autoComplete="name" /></label>
                 <label className="lx-field"><span>{t.labels[1]}</span><input name="company" autoComplete="organization" /></label>
@@ -555,8 +591,18 @@ export default function App() {
               </div>
               <label className="lx-field"><span>{t.labels[5]}</span><input name="tools" /></label>
               <label className="lx-field"><span>{t.labels[6]}</span><textarea required name="challenge" rows="5" /></label>
-              <button className="lx-btn lx-btn--solid">{t.send}<ArrowRight /></button>
+              {turnstileSiteKey && <div ref={turnstileRef} />}
+              {(sendState === "error" || sendState === "limited") && (
+                <p className="lx-formError" role="alert">
+                  {sendState === "limited" ? t.sendLimited : t.sendError}{" "}
+                  <a href="mailto:safeports.contacto@gmail.com">safeports.contacto@gmail.com</a>
+                </p>
+              )}
+              <button className="lx-btn lx-btn--solid" disabled={sendState === "sending"}>
+                {sendState === "sending" ? t.sending : contactApiUrl ? t.sendDirect : t.send}<ArrowRight />
+              </button>
             </form>
+            )}
           </div>
         </section>
       </main>

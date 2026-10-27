@@ -682,6 +682,17 @@ body:has(.lx-site) {
 .lx-field textarea::placeholder { color: var(--stone-3); }
 
 .lx-form .lx-btn { justify-self: start; margin-top: 6px; }
+.lx-form .lx-btn:disabled { opacity: 0.6; cursor: wait; }
+
+/* Honeypot: fuera de pantalla, no con display:none (algunos bots lo detectan). */
+.lx-trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+
+.lx-formError { margin: 0; font-size: 14px; line-height: 1.5; color: var(--ink); }
+.lx-formError a { color: inherit; text-decoration: underline; }
+
+.lx-sent { align-content: start; gap: 12px; }
+.lx-sent h3 { margin: 0; font: 400 32px/1.15 var(--serif); color: var(--ink); }
+.lx-sent p { margin: 0; color: var(--ink-mute); font-size: 16px; line-height: 1.6; }
 
 /* ---------- Pie ---------- */
 
