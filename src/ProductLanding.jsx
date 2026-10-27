@@ -97,7 +97,7 @@ const Brand = () => (
 
 const featureIcons = [Layers3, Sparkles, ShieldCheck];
 
-const money = (amount) => `$${amount} ${landsCurrency}`;
+const money = (amount) => `$${amount.toLocaleString("es-MX")} ${landsCurrency}`;
 
 /* Planes publicados de Lands. Montos y límites vienen de data/business.js. */
 function Pricing({ trialHref, external }) {

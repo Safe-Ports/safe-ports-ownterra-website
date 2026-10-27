@@ -33,7 +33,7 @@ const sections = [
         `Cada organización nueva cuenta con una prueba de ${landsTrial.days} días sin necesidad de tarjeta. Al terminar la prueba no se realiza ningún cargo automático: para seguir usando el servicio el Cliente debe elegir un plan de pago.`,
       ]],
       ["5. Planes, precios y facturación", [
-        `Los precios vigentes se publican en la página de precios de este sitio y dentro de la aplicación. Se expresan en dólares estadounidenses (${landsCurrency}) por mes y pueden causar los impuestos aplicables.`,
+        `Los precios vigentes se publican en la página de precios de este sitio y dentro de la aplicación. Se expresan en pesos mexicanos (${landsCurrency}) por mes y pueden causar los impuestos aplicables.`,
         "Las suscripciones se cobran por adelantado y se renuevan automáticamente cada mes con el método de pago registrado, hasta que el Cliente las cancele. Los pagos se procesan a través de Stripe; no almacenamos los datos completos de tarjetas.",
         "Si modificamos el precio de un plan, lo avisaremos por correo con al menos 30 días de anticipación. El nuevo precio aplicará a partir de la siguiente renovación posterior a ese plazo.",
         "El Cliente puede cambiar de plan desde la aplicación. El ajuste correspondiente se muestra en el portal de facturación antes de confirmar el cambio.",

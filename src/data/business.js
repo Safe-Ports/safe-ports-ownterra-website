@@ -20,7 +20,7 @@ export const business = {
   email: "safeports.contacto@gmail.com",
 };
 
-export const legalUpdatedAt = "30 de septiembre de 2026";
+export const legalUpdatedAt = "26 de octubre de 2026";
 
 export const landsTrial = {
   days: 14,
@@ -28,31 +28,34 @@ export const landsTrial = {
   highlights: ["Todo ilimitado durante la prueba", "Sin tarjeta de crédito", "Al terminar eliges el plan que necesitas"],
 };
 
-export const landsCurrency = "USD";
+export const landsCurrency = "MXN";
 
+// Precios de Lands en producción (Stripe Live, MXN). El tope de lotes es por
+// organización, no por fraccionamiento. El almacenamiento publicado es el que
+// ofrecemos: 5, 15 y 25 GB.
 export const landsPlans = [
   {
     key: "estandar",
     name: "Estándar",
-    price: 99,
+    price: 2000,
     tagline: "Para inmobiliarias que arrancan.",
-    highlights: ["5 usuarios del equipo", "3 fraccionamientos · 25 lotes c/u", "5 formularios · 2 calculadoras", "Reportes y dashboard ilimitados", "10 GB de documentos · Bot de soporte"],
+    highlights: ["5 usuarios del equipo", "3 fraccionamientos · 25 lotes en total", "5 formularios · 2 calculadoras", "Reportes y dashboard ilimitados", "5 GB de documentos · Bot de soporte"],
   },
   {
     key: "crecimiento",
     name: "Crecimiento",
-    price: 149,
+    price: 5000,
     recommended: true,
     tagline: "Para desarrolladoras en expansión.",
-    highlights: ["10 usuarios del equipo", "5 fraccionamientos · 50 lotes c/u", "Formularios y calculadoras ilimitados", "Reportes y dashboard ilimitados", "50 GB de documentos · Bot prioritario"],
+    highlights: ["10 usuarios del equipo", "5 fraccionamientos · 50 lotes en total", "Formularios y calculadoras ilimitados", "Reportes y dashboard ilimitados", "15 GB de documentos · Bot prioritario"],
   },
   {
     key: "profesional",
     name: "Profesional",
-    price: 249,
+    price: 8000,
     tagline: "Para grupos y constructoras.",
-    highlights: ["Usuarios y fraccionamientos ilimitados", "250 lotes por fraccionamiento", "Formularios y calculadoras ilimitados", "Reportes y dashboard ilimitados", "100 GB de documentos · Bot dedicado"],
+    highlights: ["Usuarios y fraccionamientos ilimitados", "250 lotes en total", "Formularios y calculadoras ilimitados", "Reportes y dashboard ilimitados", "25 GB de documentos · Bot dedicado"],
   },
 ];
 
-export const landsAddon = { label: "Paquete de +100 lotes", price: 10 };
+export const landsAddon = { label: "Paquete de +100 lotes", price: 200 };
