@@ -1,6 +1,6 @@
 import { ArrowLeft, ArrowRight, Check, Layers3, ShieldCheck, Sparkles } from "lucide-react";
 import SiteFooter from "./components/SiteFooter";
-import { landsAddon, landsCurrency, landsPlans, landsTrial } from "./data/business";
+import { landsCurrency, landsLargeOperationLots, landsLargePackagePrice, landsPackages, landsPlans, landsTrial } from "./data/business";
 import { getPublicProduct } from "./data/publicProducts";
 import { asset } from "./lib/url";
 
@@ -121,13 +121,14 @@ function Pricing({ trialHref, external }) {
             {plan.recommended && <span className="lxp-planRibbon">Recomendado</span>}
             <h3>{plan.name}</h3>
             <p className="lxp-planTag">{plan.tagline}</p>
-            <p className="lxp-planPrice"><b>{money(plan.price)}</b><span>/mes</span></p>
+            <p className="lxp-planPrice"><b>{money(plan.price)}</b><span>/mes + IVA</span></p>
             <ul>{plan.highlights.map((item) => <li key={item}><Check />{item}</li>)}</ul>
           </article>
         ))}
       </div>
       <p className="lxp-planNote">
-        La app móvil para vendedores no tiene costo adicional: se incluye con cualquier plan de pago activo (acceso anticipado, aún no publicada en tiendas). {landsAddon.label}: {money(landsAddon.price)}, disponible en cualquier plan. Los pagos se procesan de forma segura con Stripe.{" "}
+        ¿Más de {landsLargeOperationLots.toLocaleString("es-MX")} lotes? Te hacemos una cotización con descuento por volumen: Empresarial más paquetes de {landsPackages.size} lotes a {money(landsPackages.price)}, y a {money(landsLargePackagePrice)} a partir del lote {(landsLargeOperationLots + 1).toLocaleString("es-MX")}. En la aplicación puedes calcular tu estimado para operaciones de hasta 5,000 lotes. Si este presupuesto no satisface tus necesidades, <a href={asset("/#contact")}>envíanos la cantidad de lotes de tu operación</a> y con gusto te generamos una cotización personalizada.{" "}
+        La app móvil para vendedores no tiene costo adicional: se incluye con cualquier plan de pago activo (acceso anticipado, aún no publicada en tiendas). Los pagos se procesan de forma segura con Stripe.{" "}
         Consulta los <a href={asset("/legal.html#terminos")}>términos</a> y la <a href={asset("/legal.html#cancelacion")}>política de cancelación y reembolsos</a>.
       </p>
     </section>

@@ -251,7 +251,7 @@
 
 /* ---------- Planes (Lands) ---------- */
 
-.lxp-plans { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--rule-soft); }
+.lxp-plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule-soft); }
 
 .lxp-plan { position: relative; display: flex; flex-direction: column; padding: 40px 30px; background: var(--stone-0); }
 .lxp-plan.is-rec { background: var(--stone-1); box-shadow: inset 0 3px 0 var(--terracotta); }
@@ -358,7 +358,7 @@
 
 @media (max-width: 1000px) {
   .lxp-features, .lxp-outcomes, .lxp-audienceGrid { grid-template-columns: 1fr; }
-  .lxp-plans { grid-template-columns: repeat(2, 1fr); }
+  .lxp-plans { grid-template-columns: 1fr; }
   .lxp-featureNum { top: 34px; }
 }
 
@@ -366,7 +366,6 @@
   .lxp-hero { grid-template-columns: 1fr; padding-top: 44px; }
   .lxp-media { order: -1; }
   .lxp-gallery { grid-template-columns: 1fr; }
-  .lxp-plans { grid-template-columns: 1fr; }
   .lxp-gallery.is-four figure:first-child { grid-column: auto; }
   .lxp-nav { gap: 18px; }
   .lxp-back span { display: none; }

@@ -6,9 +6,9 @@
   - `legalName` debe coincidir exactamente con el nombre registrado en Stripe
     y en el RFC; Stripe compara el sitio contra ese dato. Solo aparece dentro
     de los textos legales (términos y aviso de privacidad), detrás de `operator`.
-  - Los montos de `landsPlans` replican los de la aplicación
-    (safe-port-own-terra-front/src/components/shared/PricingPlans.jsx). El cobro
-    real lo define Stripe: si cambian ahí, actualizar aquí también.
+  - Los montos de `landsPlans` y `landsPackages` replican los de la aplicación
+    (safe-port-own-terra-front/src/services/landsPricing.js). El cobro real lo
+    define Stripe: si cambian ahí, actualizar aquí también.
 */
 export const business = {
   brand: "Own Terra",
@@ -30,32 +30,33 @@ export const landsTrial = {
 
 export const landsCurrency = "MXN";
 
-// Precios de Lands en producción (Stripe Live, MXN). El tope de lotes es por
-// organización, no por fraccionamiento. El almacenamiento publicado es el que
-// ofrecemos: 5, 15 y 25 GB.
+// Precios de Lands (MXN, más IVA). El tope de lotes es por organización, no por
+// fraccionamiento. Galería principal: prueba + Estándar + Empresarial; arriba
+// de `landsLargeOperationLots` se cotiza (estimado en la calculadora de la app:
+// Empresarial + paquetes extra con descuento por volumen).
 export const landsPlans = [
   {
     key: "estandar",
     name: "Estándar",
-    price: 2000,
-    tagline: "Para inmobiliarias que arrancan.",
-    highlights: ["5 usuarios del equipo", "3 fraccionamientos · 25 lotes en total", "5 formularios · 2 calculadoras", "Reportes y dashboard ilimitados", "5 GB de documentos · Bot de soporte"],
-  },
-  {
-    key: "crecimiento",
-    name: "Crecimiento",
-    price: 5000,
+    price: 6000,
     recommended: true,
-    tagline: "Para desarrolladoras en expansión.",
-    highlights: ["10 usuarios del equipo", "5 fraccionamientos · 50 lotes en total", "Formularios y calculadoras ilimitados", "Reportes y dashboard ilimitados", "15 GB de documentos · Bot prioritario"],
+    tagline: "Para inmobiliarias y desarrolladoras en operación.",
+    highlights: ["10 usuarios del equipo", "250 lotes en total", "Formularios y calculadoras ilimitados", "Reportes y dashboard ilimitados", "15 GB de documentos · Bot prioritario"],
   },
   {
-    key: "profesional",
-    name: "Profesional",
+    key: "empresarial",
+    name: "Empresarial",
     price: 8000,
     tagline: "Para grupos y constructoras.",
-    highlights: ["Usuarios y fraccionamientos ilimitados", "250 lotes en total", "Formularios y calculadoras ilimitados", "Reportes y dashboard ilimitados", "25 GB de documentos · Bot dedicado"],
+    highlights: ["Usuarios y fraccionamientos ilimitados", "500 lotes en total", "Formularios y calculadoras ilimitados", "Reportes y dashboard ilimitados", "25 GB de documentos · Bot dedicado"],
   },
 ];
 
-export const landsAddon = { label: "Paquete de +100 lotes", price: 200 };
+// Paquetes extra de 50 lotes sobre el Empresarial (operación grande).
+export const landsPackages = { size: 50, price: 100 };
+
+export const landsLargeOperationLots = 600;
+
+// Operación grande: Empresarial + paquetes extra; a partir de este número de
+// lotes cada paquete lleva descuento (precio graduado, igual que en la app).
+export const landsLargePackagePrice = 80;
